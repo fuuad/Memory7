@@ -36,22 +36,23 @@ namespace Memory
             this.cols = cols;
             this.rows = rows;
             InitializeGameGrid(cols, rows);
-            InitializeGameGrid(1 , 0);
+            InitializeGameGrid(1, 0);
             AddTitle();
             AddScores();
             GetImagesList();
             AddImages();
             Sound3.Volume = 0.05;
-            Sound3.Open((new Uri("../../Audio/background2.mp3", UriKind.Relative)));
+            Sound3.Open((new Uri("Audio/background2.mp3", UriKind.Relative)));
             Sound3.Play();
             Sound3.MediaEnded += new EventHandler(Media_Ended);
             setBackground();
         }
 
-        private void setBackground() {
+        private void setBackground()
+        {
             ImageBrush myBrush = new ImageBrush();
             myBrush.ImageSource =
-                new BitmapImage(new Uri("../../Images/background2.png", UriKind.Relative));
+                new BitmapImage(new Uri("Images/background2.png", UriKind.Relative));
             grid.Background = myBrush;
         }
         private void Media_Ended(object sender, EventArgs e)
@@ -127,19 +128,17 @@ namespace Memory
 
         private List<ImageSource> GetImagesList()
         {
-            String[] files = Directory.GetFiles("../../Icons/", "*.png");
+            String[] files = Directory.GetFiles("Icons/", "*.png");
             
-
-            for (int i = 0; i < files.Length -1; i++)
+            for (int i = 1; i < files.Length; i++)
             {
-                int imageNr = i + 1;
-                ImageSource source = new BitmapImage(new Uri("Icons/" + imageNr + ".png", UriKind.Relative));
+                ImageSource source = new BitmapImage(new Uri(files[i], UriKind.Relative));
                 images.Add(source);
             }
             var rand = new Random();
             images = images.OrderBy(x => rand.Next()).ToList();
-            images.RemoveRange(cols*rows/2 - 1,images.Count - cols * rows /2);
-           
+            images.RemoveRange(cols * rows / 2 - 1, images.Count - cols * rows / 2);
+
             images = images.Concat(images).ToList();
             return images;
         }
@@ -147,8 +146,8 @@ namespace Memory
 
         private async void AddImages()
         {
-           var rand = new Random();
-           images = images.OrderBy(x => rand.Next()).ToList();
+            var rand = new Random();
+            images = images.OrderBy(x => rand.Next()).ToList();
 
             for (int row = 0; row < rows; row++)
             {
@@ -164,7 +163,7 @@ namespace Memory
                     Grid.SetRow(backgroundImage, row);
                     grid.Children.Add(backgroundImage);
                     await Task.Delay(500);
-                    backgroundImage.Source = new BitmapImage(new Uri("Icons/question.png", UriKind.Relative));
+                    backgroundImage.Source = new BitmapImage(new Uri("Images/question.png", UriKind.Relative));
                     allowclick = false;
                 }
             }
@@ -175,7 +174,7 @@ namespace Memory
         {
             if (allowclick == true)
             {
-                Sound1.Open((new Uri("../../Audio/click.wav", UriKind.Relative)));
+                Sound1.Open((new Uri("Audio/click.wav", UriKind.Relative)));
                 Sound1.Play();
 
                 Image card = (Image)sender;
@@ -194,7 +193,7 @@ namespace Memory
                 {
                     //GOED GEKLIKT
                     Sound2.Volume = 0.3;
-                    Sound2.Open((new Uri("../../Audio/matched.wav", UriKind.Relative)));
+                    Sound2.Open((new Uri("Audio/matched.wav", UriKind.Relative)));
                     Sound2.Play();
                     correctcount += 2;
                     Console.WriteLine("Goedzo");
@@ -205,12 +204,12 @@ namespace Memory
                     if (currentplayer == 0)
                     {
                         player1score++;
-                        score1.Content = "Player 1 Score :" + player1score;
+                        score1.Content = "Player 1 Score :" + " " + player1score;
                     }
                     else
                     {
                         player2score++;
-                        score2.Content = "Player 2 Score :" + player2score;
+                        score2.Content = "Player 2 Score :" + " " + player2score;
                     }
                     allowclick = true;
                 }
@@ -220,7 +219,7 @@ namespace Memory
                     if (currentplayer == 0)
                     {
                         currentplayer = 1;
-                        Console.WriteLine("Player 2's turn");           
+                        Console.WriteLine("Player 2's turn");
                     }
                     else
                     {
@@ -230,8 +229,8 @@ namespace Memory
                     allowclick = false;
                     Console.WriteLine("Niet goed");
                     await Task.Delay(1000);
-                    firstGuess.Source = new BitmapImage(new Uri("Icons/question.png", UriKind.Relative));
-                    card.Source = new BitmapImage(new Uri("Icons/question.png", UriKind.Relative));
+                    firstGuess.Source = new BitmapImage(new Uri("Images/question.png", UriKind.Relative));
+                    card.Source = new BitmapImage(new Uri("Images/question.png", UriKind.Relative));
                     firstGuess.MouseDown += new MouseButtonEventHandler(CardClick);
                     allowclick = true;
                 }
@@ -245,11 +244,12 @@ namespace Memory
                     {
                         MessageBox.Show("Player 2 wins!");
                     }
-                    else {
+                    else
+                    {
                         MessageBox.Show("Draw!");
                     }
                 }
-                firstGuess = null;                
+                firstGuess = null;
             }
         }
     }
