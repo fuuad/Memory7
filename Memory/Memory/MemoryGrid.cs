@@ -162,6 +162,7 @@ namespace Memory
                 }
                 else
                 {
+                    //FOUT GEKLIKT
                     if (currentplayer == 0)
                     {
                         currentplayer = 1;
