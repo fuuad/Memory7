@@ -1,0 +1,15 @@
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\Memory.csprojAssemblyReference.cache
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\App.g.cs
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\Memory_MarkupCompile.cache
+C:\Users\Jelke\source\repos\Memory\Memory\bin\Debug\Memory.exe.config
+C:\Users\Jelke\source\repos\Memory\Memory\bin\Debug\Memory.exe
+C:\Users\Jelke\source\repos\Memory\Memory\bin\Debug\Memory.pdb
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\MainWindow.g.cs
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\Memory_MarkupCompile.lref
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\MainWindow.baml
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\Memory.g.resources
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\Memory.Properties.Resources.resources
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\Memory.csproj.GenerateResource.cache
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\Memory.csproj.CoreCompileInputs.cache
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\Memory.exe
+C:\Users\Jelke\source\repos\Memory\Memory\obj\Debug\Memory.pdb
