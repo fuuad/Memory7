@@ -8,18 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/10.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/11.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/12.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/3.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/4.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/5.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/6.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/7.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/8.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/9.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/question.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/background2.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icon.png")]
 
 

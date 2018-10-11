@@ -110,5 +110,14 @@
     <Resource Include="Icons\9.png" />
     <Resource Include="Icons\question.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Audio\background2.mp3" />
+    <Resource Include="Audio\click.wav" />
+    <Resource Include="Audio\matched.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\background2.png" />
+    <EmbeddedResource Include="Images\icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

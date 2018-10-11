@@ -25,7 +25,9 @@ namespace Memory
         Label score1 = new Label();
         Label score2 = new Label();
         Label title = new Label();
-
+        MediaPlayer Sound1 = new MediaPlayer();
+        MediaPlayer Sound2 = new MediaPlayer();
+        MediaPlayer Sound3 = new MediaPlayer();
         Image firstGuess;
 
         public MemoryGrid(Grid grid, int cols, int rows)
@@ -34,11 +36,28 @@ namespace Memory
             this.cols = cols;
             this.rows = rows;
             InitializeGameGrid(cols, rows);
-            InitializeGameGrid(2 , 0);
+            InitializeGameGrid(1 , 0);
             AddTitle();
             AddScores();
             GetImagesList();
             AddImages();
+            Sound3.Volume = 0.05;
+            Sound3.Open((new Uri("../../Audio/background2.mp3", UriKind.Relative)));
+            Sound3.Play();
+            Sound3.MediaEnded += new EventHandler(Media_Ended);
+            setBackground();
+        }
+
+        private void setBackground() {
+            ImageBrush myBrush = new ImageBrush();
+            myBrush.ImageSource =
+                new BitmapImage(new Uri("../../Images/background2.png", UriKind.Relative));
+            grid.Background = myBrush;
+        }
+        private void Media_Ended(object sender, EventArgs e)
+        {
+            Sound3.Position = TimeSpan.Zero;
+            Sound3.Play();
         }
 
         private void InitializeGameGrid(int cols, int rows)
@@ -55,34 +74,53 @@ namespace Memory
 
         private void AddTitle()
         {
+            Label title = new Label();
             title.Content = "Memory";
-            title.FontFamily = new FontFamily("Comic Sans");
-            title.FontSize = 40;
-            title.HorizontalAlignment = HorizontalAlignment.Center;
-            Grid.SetColumnSpan(title, 7);
-            Grid.SetColumn(title, cols);
-            grid.Children.Add(title);
+            title.Foreground = Brushes.White;
+            title.HorizontalAlignment = HorizontalAlignment.Stretch;
+            title.VerticalAlignment = VerticalAlignment.Stretch;
+            title.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            title.VerticalAlignment = VerticalAlignment.Stretch;
+
+            Viewbox vb = new Viewbox();
+            vb.HorizontalAlignment = HorizontalAlignment.Stretch;
+            vb.Child = title;
+            Grid.SetRow(vb, 0);
+            Grid.SetColumn(vb, cols);
+            grid.Children.Add(vb);
         }
 
         private void AddScores()
         {
-            score1.Content = "Player 1 Score :" + player1score;
+            score1.Content = "Player 1 Score :" + " " + player1score;
             score1.FontFamily = new FontFamily("Comic Sans");
-            score1.FontSize = 20;
-            score1.HorizontalAlignment = HorizontalAlignment.Center;
-            Grid.SetColumnSpan(score1, 7);
-            Grid.SetColumn(score1, cols);
-            Grid.SetRow(score1, 1);
-            grid.Children.Add(score1);
+            score1.Foreground = Brushes.White;
+            score1.HorizontalAlignment = HorizontalAlignment.Stretch;
+            score1.VerticalAlignment = VerticalAlignment.Stretch;
+            score1.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            score1.VerticalAlignment = VerticalAlignment.Stretch;
 
-            score2.Content = "Player 2 Score :" + player2score;
+            Viewbox vb = new Viewbox();
+            vb.HorizontalAlignment = HorizontalAlignment.Stretch;
+            vb.Child = score1;
+            Grid.SetRow(vb, 1);
+            Grid.SetColumn(vb, cols);
+            grid.Children.Add(vb);
+
+            score2.Content = "Player 2 Score :" + " " + player2score;
             score2.FontFamily = new FontFamily("Comic Sans");
-            score2.FontSize = 20;
-            score2.HorizontalAlignment = HorizontalAlignment.Center;
-            Grid.SetColumnSpan(score2, 7);
-            Grid.SetColumn(score2, cols);
-            Grid.SetRow(score2, 2);
-            grid.Children.Add(score2);
+            score2.Foreground = Brushes.White;
+            score2.HorizontalAlignment = HorizontalAlignment.Stretch;
+            score2.VerticalAlignment = VerticalAlignment.Stretch;
+            score2.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            score2.VerticalAlignment = VerticalAlignment.Stretch;
+
+            Viewbox vb2 = new Viewbox();
+            vb2.HorizontalAlignment = HorizontalAlignment.Stretch;
+            vb2.Child = score2;
+            Grid.SetRow(vb2, 2);
+            Grid.SetColumn(vb2, cols);
+            grid.Children.Add(vb2);
         }
 
         List<ImageSource> images = new List<ImageSource>();
@@ -137,6 +175,9 @@ namespace Memory
         {
             if (allowclick == true)
             {
+                Sound1.Open((new Uri("../../Audio/click.wav", UriKind.Relative)));
+                Sound1.Play();
+
                 Image card = (Image)sender;
                 ImageSource front = (ImageSource)card.Tag;
                 card.Source = front;
@@ -152,6 +193,9 @@ namespace Memory
                 if (card.Source.ToString() == firstGuess.Source.ToString() && card != firstGuess)
                 {
                     //GOED GEKLIKT
+                    Sound2.Volume = 0.3;
+                    Sound2.Open((new Uri("../../Audio/matched.wav", UriKind.Relative)));
+                    Sound2.Play();
                     correctcount += 2;
                     Console.WriteLine("Goedzo");
                     firstGuess.Opacity = 0.5;
