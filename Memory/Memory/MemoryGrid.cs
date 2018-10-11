@@ -22,6 +22,7 @@ namespace Memory
         private int player1score = 0;
         private int player2score = 0;
         private int correctcount = 0;
+        private string theme = "Default";
         Label score1 = new Label();
         Label score2 = new Label();
         Label title = new Label();
@@ -29,9 +30,11 @@ namespace Memory
         MediaPlayer Sound2 = new MediaPlayer();
         MediaPlayer Sound3 = new MediaPlayer();
         Image firstGuess;
+        String[] files;
 
         public MemoryGrid(Grid grid, int cols, int rows)
         {
+            theme = Microsoft.VisualBasic.Interaction.InputBox("Welk Thema wil je? Default of Warcraft?", "Vraagje", "Default");
             this.grid = grid;
             this.cols = cols;
             this.rows = rows;
@@ -41,18 +44,45 @@ namespace Memory
             AddScores();
             GetImagesList();
             AddImages();
-            Sound3.Volume = 0.05;
-            Sound3.Open((new Uri("Audio/background2.mp3", UriKind.Relative)));
-            Sound3.Play();
-            Sound3.MediaEnded += new EventHandler(Media_Ended);
+            switch (theme)
+            {
+                case "Default":
+                    Sound3.Volume = 0.1;
+                    Sound3.Open((new Uri("Themes/Default/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Play();
+                    Sound3.MediaEnded += new EventHandler(Media_Ended);
+                    break;
+                case "Warcraft":
+                    Sound3.Volume = 0.05;
+                    Sound3.Open((new Uri("Themes/Warcraft/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Play();
+                    Sound3.MediaEnded += new EventHandler(Media_Ended);
+                    break;
+                default:
+                    Sound3.Volume = 0.1;
+                    Sound3.Open((new Uri("Themes/Default/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Play();
+                    Sound3.MediaEnded += new EventHandler(Media_Ended);
+                    break;
+            }
             setBackground();
         }
 
         private void setBackground()
         {
             ImageBrush myBrush = new ImageBrush();
-            myBrush.ImageSource =
-                new BitmapImage(new Uri("Images/background2.png", UriKind.Relative));
+            switch (theme)
+            {
+                case "Default":
+                    myBrush.ImageSource = new BitmapImage(new Uri("Themes/Default/Assets/background.png", UriKind.Relative));
+                    break;
+                case "Warcraft":
+                    myBrush.ImageSource = new BitmapImage(new Uri("Themes/Warcraft/Assets/background.png", UriKind.Relative));
+                    break;
+                default:
+                    myBrush.ImageSource = new BitmapImage(new Uri("Themes/Default/Assets/background.png", UriKind.Relative));
+                    break;
+            }
             grid.Background = myBrush;
         }
         private void Media_Ended(object sender, EventArgs e)
@@ -128,7 +158,19 @@ namespace Memory
 
         private List<ImageSource> GetImagesList()
         {
-            String[] files = Directory.GetFiles("Icons/", "*.png");
+
+            switch (theme)
+            {
+                case "Default":
+                    files = Directory.GetFiles("Themes/Default/Front/", "*.png");
+                    break;
+                case "Warcraft":
+                    files = Directory.GetFiles("Themes/Warcraft/Front/", "*.png");
+                    break;
+                default:
+                    files = Directory.GetFiles("Themes/Default/Front/", "*.png");
+                    break;
+            }
             
             for (int i = 1; i < files.Length; i++)
             {
@@ -142,7 +184,6 @@ namespace Memory
             images = images.Concat(images).ToList();
             return images;
         }
-
 
         private async void AddImages()
         {
@@ -163,7 +204,7 @@ namespace Memory
                     Grid.SetRow(backgroundImage, row);
                     grid.Children.Add(backgroundImage);
                     await Task.Delay(500);
-                    backgroundImage.Source = new BitmapImage(new Uri("Images/question.png", UriKind.Relative));
+                    backgroundImage.Source = new BitmapImage(new Uri("Themes/Warcraft/Back/question.png", UriKind.Relative));
                     allowclick = false;
                 }
             }
@@ -174,7 +215,7 @@ namespace Memory
         {
             if (allowclick == true)
             {
-                Sound1.Open((new Uri("Audio/click.wav", UriKind.Relative)));
+                Sound1.Open((new Uri("Themes/Warcraft/Audio/click.wav", UriKind.Relative)));
                 Sound1.Play();
 
                 Image card = (Image)sender;
@@ -193,7 +234,7 @@ namespace Memory
                 {
                     //GOED GEKLIKT
                     Sound2.Volume = 0.3;
-                    Sound2.Open((new Uri("Audio/matched.wav", UriKind.Relative)));
+                    Sound2.Open((new Uri("Themes/Warcraft/Audio/matched.wav", UriKind.Relative)));
                     Sound2.Play();
                     correctcount += 2;
                     Console.WriteLine("Goedzo");
@@ -229,8 +270,8 @@ namespace Memory
                     allowclick = false;
                     Console.WriteLine("Niet goed");
                     await Task.Delay(1000);
-                    firstGuess.Source = new BitmapImage(new Uri("Images/question.png", UriKind.Relative));
-                    card.Source = new BitmapImage(new Uri("Images/question.png", UriKind.Relative));
+                    firstGuess.Source = new BitmapImage(new Uri("Themes/Warcraft/Back/question.png", UriKind.Relative));
+                    card.Source = new BitmapImage(new Uri("Themes/Warcraft/Back/question.png", UriKind.Relative));
                     firstGuess.MouseDown += new MouseButtonEventHandler(CardClick);
                     allowclick = true;
                 }
