@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Windows.Input;
+using System.IO;
 
 namespace Memory
 {
@@ -36,6 +37,7 @@ namespace Memory
             InitializeGameGrid(2 , 0);
             AddTitle();
             AddScores();
+            GetImagesList();
             AddImages();
         }
 
@@ -83,25 +85,33 @@ namespace Memory
             grid.Children.Add(score2);
         }
 
+        List<ImageSource> images = new List<ImageSource>();
 
         private List<ImageSource> GetImagesList()
         {
-            List<ImageSource> images = new List<ImageSource>();
-            for (int i = 0; i < (cols * rows); i++)
+            String[] files = Directory.GetFiles("../../Icons/", "*.png");
+            
+
+            for (int i = 0; i < files.Length -1; i++)
             {
-                int imageNr = i % (cols * rows / 2) + 1;
+                int imageNr = i + 1;
                 ImageSource source = new BitmapImage(new Uri("Icons/" + imageNr + ".png", UriKind.Relative));
                 images.Add(source);
             }
+            var rand = new Random();
+            images = images.OrderBy(x => rand.Next()).ToList();
+            images.RemoveRange(cols*rows/2 - 1,images.Count - cols * rows /2);
+           
+            images = images.Concat(images).ToList();
             return images;
         }
 
 
         private async void AddImages()
         {
-            List<ImageSource> images = GetImagesList();
-            var rand = new Random();
-            images = images.OrderBy(x => rand.Next()).ToList();
+           var rand = new Random();
+           images = images.OrderBy(x => rand.Next()).ToList();
+
             for (int row = 0; row < rows; row++)
             {
                 for (int column = 0; column < cols; column++)
@@ -166,7 +176,7 @@ namespace Memory
                     if (currentplayer == 0)
                     {
                         currentplayer = 1;
-                        Console.WriteLine("Player 2's turn");
+                        Console.WriteLine("Player 2's turn");           
                     }
                     else
                     {
@@ -178,6 +188,7 @@ namespace Memory
                     await Task.Delay(1000);
                     firstGuess.Source = new BitmapImage(new Uri("Icons/question.png", UriKind.Relative));
                     card.Source = new BitmapImage(new Uri("Icons/question.png", UriKind.Relative));
+                    firstGuess.MouseDown += new MouseButtonEventHandler(CardClick);
                     allowclick = true;
                 }
                 if (correctcount == images.Count)
@@ -194,7 +205,6 @@ namespace Memory
                         MessageBox.Show("Draw!");
                     }
                 }
-                firstGuess.MouseDown += new MouseButtonEventHandler(CardClick);
                 firstGuess = null;                
             }
         }
