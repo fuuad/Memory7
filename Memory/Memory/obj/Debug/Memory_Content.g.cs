@@ -25,6 +25,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("themes/default/audio/click.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("themes/default/audio/matched.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("themes/default/assets/background.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("themes/mainmenu/background.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("themes/warcraft/back/question.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("themes/warcraft/assets/background.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("themes/warcraft/assets/icon.png")]

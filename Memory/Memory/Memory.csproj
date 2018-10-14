@@ -150,6 +150,10 @@
     <Content Include="Themes\Default\Assets\background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Themes\MainMenu\MainLogo.png" />
+    <Content Include="Themes\MainMenu\background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Themes\Warcraft\Back\question.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
