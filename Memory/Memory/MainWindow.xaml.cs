@@ -24,18 +24,11 @@ namespace Memory
         private int NR_OF_ROWS = 4;
         MemoryGrid grid;
 
-        //Hoofdmenu menu;
-
         public MainWindow()
         {
             InitializeComponent();
+            grid = new MemoryGrid(GameGrid, NR_OF_COLS, NR_OF_ROWS);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Title = "Clicked";
-            
-            grid = new MemoryGrid(GameGrid, NR_OF_ROWS, NR_OF_COLS);
-        }
     }
 }

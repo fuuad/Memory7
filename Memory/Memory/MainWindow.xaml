@@ -6,50 +6,7 @@
         xmlns:local="clr-namespace:Memory"
         mc:Ignorable="d"
         Title="Memory" Height="450" Width="800" MinHeight="450" MinWidth="800">
-    <Grid HorizontalAlignment="Stretch" Width="Auto">
-
-        <Image Source="Themes/MainMenu/background.png" Stretch="Fill"></Image>
-        <Viewbox>
-            <StackPanel Background="Transparent" Width="400" Height="400">
-                <Image Source="Themes/MainMenu/MainLogo.png" VerticalAlignment="top" Margin="0,20,0,30"></Image>
-
-                <Button Content="Afsluiten"
-                        x:Name="Quit"
-                        Width="280"
-                        Height="40"
-                        Click="Button_Click" 
-                        Margin="60,5"/>
-
-                <Button Content="Statistieken"
-                        x:Name="Stats"
-                        Width="280"
-                        Height="40"
-                        Click="Button_Click" 
-                        Margin="60,5"/>
-                
-                <Button Content="Laad Spel"
-                        x:Name="Load"
-                        Width="280"
-                        Height="40"
-                        Click="Button_Click"
-                        Margin="60,5"/>
-                
-                <Button Content="Speel"
-                        x:Name="Start"
-                        Width="280"
-                        Height="40"
-                        Click="Button_Click" 
-                        Margin="60,5"/>
-
-            </StackPanel>
-        </Viewbox>
-        <Button Content="COG" Name="Options"
-                Width="40" Height="40"
-                HorizontalAlignment="Right" 
-                VerticalAlignment="Bottom"
-                Click="Button_Click"/>
-        <Grid x:Name="GameGrid">
-
-        </Grid>
+    <Grid x:Name="GameGrid">
+        
     </Grid>
 </Window>

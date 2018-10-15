@@ -30,10 +30,27 @@ namespace Memory
         MediaPlayer Sound2 = new MediaPlayer();
         MediaPlayer Sound3 = new MediaPlayer();
         Image firstGuess;
+        String[] directories = Directory.GetDirectories("Themes/");
         String[] files;
 
+        /*
+        for each element in directories.
+        dropdown met alle namen van folders.
+        selecteer dat en zet die naam als var theme.
+        */
+
+
+        private void GetTheme() {
+            foreach (string s in directories)
+            {
+                Console.WriteLine(s);
+            }
+        }
+                     
         public MemoryGrid(Grid grid, int cols, int rows)
         {
+    
+
             theme = Microsoft.VisualBasic.Interaction.InputBox("Welk Thema wil je? Default of Warcraft?", "Vraagje", "Default");
             this.grid = grid;
             this.cols = cols;
@@ -44,28 +61,8 @@ namespace Memory
             AddScores();
             GetImagesList();
             AddImages();
-            switch (theme)
-            {
-                case "Default":
-                    Sound3.Volume = 0.1;
-                    Sound3.Open((new Uri("Themes/Default/Audio/background.mp3", UriKind.Relative)));
-                    Sound3.Play();
-                    Sound3.MediaEnded += new EventHandler(Media_Ended);
-                    break;
-                case "Warcraft":
-                    Sound3.Volume = 0.05;
-                    Sound3.Open((new Uri("Themes/Warcraft/Audio/background.mp3", UriKind.Relative)));
-                    Sound3.Play();
-                    Sound3.MediaEnded += new EventHandler(Media_Ended);
-                    break;
-                default:
-                    Sound3.Volume = 0.1;
-                    Sound3.Open((new Uri("Themes/Default/Audio/background.mp3", UriKind.Relative)));
-                    Sound3.Play();
-                    Sound3.MediaEnded += new EventHandler(Media_Ended);
-                    break;
-            }
             setBackground();
+            GetTheme();
         }
 
         private void setBackground()
@@ -75,12 +72,24 @@ namespace Memory
             {
                 case "Default":
                     myBrush.ImageSource = new BitmapImage(new Uri("Themes/Default/Assets/background.png", UriKind.Relative));
+                    Sound3.Volume = 0.1;
+                    Sound3.Open((new Uri("Themes/Default/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Play();
+                    Sound3.MediaEnded += new EventHandler(Media_Ended);
                     break;
                 case "Warcraft":
                     myBrush.ImageSource = new BitmapImage(new Uri("Themes/Warcraft/Assets/background.png", UriKind.Relative));
+                    Sound3.Volume = 0.05;
+                    Sound3.Open((new Uri("Themes/Warcraft/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Play();
+                    Sound3.MediaEnded += new EventHandler(Media_Ended);
                     break;
                 default:
                     myBrush.ImageSource = new BitmapImage(new Uri("Themes/Default/Assets/background.png", UriKind.Relative));
+                    Sound3.Volume = 0.1;
+                    Sound3.Open((new Uri("Themes/Default/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Play();
+                    Sound3.MediaEnded += new EventHandler(Media_Ended);
                     break;
             }
             grid.Background = myBrush;
@@ -172,15 +181,17 @@ namespace Memory
                     break;
             }
             
-            for (int i = 1; i < files.Length; i++)
+            for (int i = 0; i < files.Length; i++)
             {
                 ImageSource source = new BitmapImage(new Uri(files[i], UriKind.Relative));
                 images.Add(source);
             }
             var rand = new Random();
             images = images.OrderBy(x => rand.Next()).ToList();
-            images.RemoveRange(cols * rows / 2 - 1, images.Count - cols * rows / 2);
-
+            if (files.Length > cols * rows / 2)
+            {
+                images.RemoveRange(cols * rows / 2, images.Count - cols * rows / 2);
+            }
             images = images.Concat(images).ToList();
             return images;
         }
