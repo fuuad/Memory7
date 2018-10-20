@@ -27,12 +27,13 @@ namespace Memory
         public MainWindow()
         {
             InitializeComponent();
-<<<<<<< HEAD
-            grid = new MemoryGrid(GameGrid, NR_OF_COLS, NR_OF_ROWS);
-=======
-            grid = new MemoryGrid(GameGrid, NR_OF_ROWS, NR_OF_COLS);
->>>>>>> parent of e2446df... Weergeven Hoofdmenu
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Title = "Clicked";
+
+            grid = new MemoryGrid(GameGrid, NR_OF_ROWS, NR_OF_COLS);
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace Memory
         MediaPlayer Sound2 = new MediaPlayer();
         MediaPlayer Sound3 = new MediaPlayer();
         Image firstGuess;
-        String[] directories = Directory.GetDirectories("Themes/");
+        String[] directories = Directory.GetDirectories("Assets/Themes/");
         String[] files;
 
         /*
@@ -71,23 +71,23 @@ namespace Memory
             switch (theme)
             {
                 case "Default":
-                    myBrush.ImageSource = new BitmapImage(new Uri("Themes/Default/Assets/background.png", UriKind.Relative));
+                    myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Default/Assets/background.png", UriKind.Relative));
                     Sound3.Volume = 0.1;
-                    Sound3.Open((new Uri("Themes/Default/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Open((new Uri("Assets/Themes/Default/Audio/background.mp3", UriKind.Relative)));
                     Sound3.Play();
                     Sound3.MediaEnded += new EventHandler(Media_Ended);
                     break;
                 case "Warcraft":
-                    myBrush.ImageSource = new BitmapImage(new Uri("Themes/Warcraft/Assets/background.png", UriKind.Relative));
+                    myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Warcraft/Assets/background.png", UriKind.Relative));
                     Sound3.Volume = 0.05;
-                    Sound3.Open((new Uri("Themes/Warcraft/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Open((new Uri("Assets/Themes/Warcraft/Audio/background.mp3", UriKind.Relative)));
                     Sound3.Play();
                     Sound3.MediaEnded += new EventHandler(Media_Ended);
                     break;
                 default:
-                    myBrush.ImageSource = new BitmapImage(new Uri("Themes/Default/Assets/background.png", UriKind.Relative));
+                    myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Default/Assets/background.png", UriKind.Relative));
                     Sound3.Volume = 0.1;
-                    Sound3.Open((new Uri("Themes/Default/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Open((new Uri("Assets/Themes/Default/Audio/background.mp3", UriKind.Relative)));
                     Sound3.Play();
                     Sound3.MediaEnded += new EventHandler(Media_Ended);
                     break;
@@ -171,13 +171,13 @@ namespace Memory
             switch (theme)
             {
                 case "Default":
-                    files = Directory.GetFiles("Themes/Default/Front/", "*.png");
+                    files = Directory.GetFiles("Assets/Themes/Default/Front/", "*.png");
                     break;
                 case "Warcraft":
-                    files = Directory.GetFiles("Themes/Warcraft/Front/", "*.png");
+                    files = Directory.GetFiles("Assets/Themes/Warcraft/Front/", "*.png");
                     break;
                 default:
-                    files = Directory.GetFiles("Themes/Default/Front/", "*.png");
+                    files = Directory.GetFiles("Assets/Themes/Default/Front/", "*.png");
                     break;
             }
             
@@ -215,7 +215,7 @@ namespace Memory
                     Grid.SetRow(backgroundImage, row);
                     grid.Children.Add(backgroundImage);
                     await Task.Delay(500);
-                    backgroundImage.Source = new BitmapImage(new Uri("Themes/Warcraft/Back/question.png", UriKind.Relative));
+                    backgroundImage.Source = new BitmapImage(new Uri("Assets/Themes/Warcraft/Back/question.png", UriKind.Relative));
                     allowclick = false;
                 }
             }
@@ -226,7 +226,7 @@ namespace Memory
         {
             if (allowclick == true)
             {
-                Sound1.Open((new Uri("Themes/Warcraft/Audio/click.wav", UriKind.Relative)));
+                Sound1.Open((new Uri("Assets/Themes/Warcraft/Audio/click.wav", UriKind.Relative)));
                 Sound1.Play();
 
                 Image card = (Image)sender;
@@ -245,7 +245,7 @@ namespace Memory
                 {
                     //GOED GEKLIKT
                     Sound2.Volume = 0.3;
-                    Sound2.Open((new Uri("Themes/Warcraft/Audio/matched.wav", UriKind.Relative)));
+                    Sound2.Open((new Uri("Assets/Themes/Warcraft/Audio/matched.wav", UriKind.Relative)));
                     Sound2.Play();
                     correctcount += 2;
                     Console.WriteLine("Goedzo");
@@ -281,8 +281,8 @@ namespace Memory
                     allowclick = false;
                     Console.WriteLine("Niet goed");
                     await Task.Delay(1000);
-                    firstGuess.Source = new BitmapImage(new Uri("Themes/Warcraft/Back/question.png", UriKind.Relative));
-                    card.Source = new BitmapImage(new Uri("Themes/Warcraft/Back/question.png", UriKind.Relative));
+                    firstGuess.Source = new BitmapImage(new Uri("Assets/Themes/Warcraft/Back/question.png", UriKind.Relative));
+                    card.Source = new BitmapImage(new Uri("Assets/Themes/Warcraft/Back/question.png", UriKind.Relative));
                     firstGuess.MouseDown += new MouseButtonEventHandler(CardClick);
                     allowclick = true;
                 }
