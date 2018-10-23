@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +35,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -57,6 +63,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Scripts\Animation\PageAnimation.cs" />
+    <Compile Include="Scripts\Animation\BasePage.cs" />
+    <Compile Include="Pages\HoofdMenuPage.xaml.cs">
+      <DependentUpon>HoofdMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\Animation\PageAnimations.cs" />
+    <Compile Include="Scripts\Animation\StoryBoardHelpers.cs" />
+    <Compile Include="Scripts\ValueConverters\ApplicatiePageValueConverter.cs" />
+    <Compile Include="Scripts\ValueConverters\BaseValueConverter.cs" />
+    <Compile Include="Scripts\ViewModel\BaseViewModel.cs" />
+    <Compile Include="Scripts\ViewModel\MainViewModel.cs" />
+    <Compile Include="Scripts\ViewModel\RelayCommand.cs" />
+    <Compile Include="Scripts\ViewModel\WindowViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -65,13 +84,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Scripts\DataModels\ApplicatiePage.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\HoofdMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MemoryGrid.cs" />
+    <Compile Include="Scripts\MemoryGrid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -98,6 +122,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+    <Resource Include="Assets\Menus\HoofdMenu\mainLogo.png" />
+    <Resource Include="Assets\Menus\HoofdMenu\background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Logo\256x256_png_icon.png" />
+    <Resource Include="Assets\Images\Logo\256x256_png_icon.ico" />
     <Content Include="Assets\Themes\Default\Front\css3-logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -211,7 +242,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\HoofdMenu\" />
+    <Folder Include="Assets\Menus\OptiesMenu\" />
+    <Folder Include="Assets\Menus\StatsMenu\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fody">
+      <Version>3.2.12</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="PropertyChanged.Fody">
+      <Version>2.5.13</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,225 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "Fody/3.2.12": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
+      "PropertyChanged.Fody/2.5.13": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "3.2.9"
+        },
+        "compile": {
+          "lib/net452/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "lib/net452/PropertyChanged.dll": {}
+        },
+        "build": {
+          "build/PropertyChanged.Fody.props": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1/win": {
+      "Fody/3.2.12": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
+      "PropertyChanged.Fody/2.5.13": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "3.2.9"
+        },
+        "compile": {
+          "lib/net452/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "lib/net452/PropertyChanged.dll": {}
+        },
+        "build": {
+          "build/PropertyChanged.Fody.props": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1/win-x64": {
+      "Fody/3.2.12": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
+      "PropertyChanged.Fody/2.5.13": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "3.2.9"
+        },
+        "compile": {
+          "lib/net452/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "lib/net452/PropertyChanged.dll": {}
+        },
+        "build": {
+          "build/PropertyChanged.Fody.props": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1/win-x86": {
+      "Fody/3.2.12": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
+      "PropertyChanged.Fody/2.5.13": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "3.2.9"
+        },
+        "compile": {
+          "lib/net452/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "lib/net452/PropertyChanged.dll": {}
+        },
+        "build": {
+          "build/PropertyChanged.Fody.props": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Fody/3.2.12": {
+      "sha512": "jETni+1WHFEGzqRV0TpzkFlz7KBwP+8kCItTC178ssttFOP++yq78NsUXoaG5JM2eieLD+/lIxM4DkaOVOaxRw==",
+      "type": "package",
+      "path": "fody/3.2.12",
+      "files": [
+        ".signature.p7s",
+        "build/Fody.targets",
+        "fody.3.2.12.nupkg.sha512",
+        "fody.nuspec",
+        "netclassictask/Fody.dll",
+        "netclassictask/Fody.pdb",
+        "netclassictask/FodyCommon.dll",
+        "netclassictask/FodyCommon.pdb",
+        "netclassictask/FodyHelpers.dll",
+        "netclassictask/FodyHelpers.pdb",
+        "netclassictask/FodyIsolated.dll",
+        "netclassictask/FodyIsolated.pdb",
+        "netclassictask/Mono.Cecil.Mdb.dll",
+        "netclassictask/Mono.Cecil.Mdb.pdb",
+        "netclassictask/Mono.Cecil.Pdb.dll",
+        "netclassictask/Mono.Cecil.Pdb.pdb",
+        "netclassictask/Mono.Cecil.Rocks.dll",
+        "netclassictask/Mono.Cecil.Rocks.pdb",
+        "netclassictask/Mono.Cecil.dll",
+        "netclassictask/Mono.Cecil.pdb",
+        "netstandardtask/Fody.dll",
+        "netstandardtask/Fody.pdb",
+        "netstandardtask/FodyCommon.dll",
+        "netstandardtask/FodyCommon.pdb",
+        "netstandardtask/FodyHelpers.dll",
+        "netstandardtask/FodyHelpers.pdb",
+        "netstandardtask/FodyIsolated.dll",
+        "netstandardtask/FodyIsolated.pdb",
+        "netstandardtask/Mono.Cecil.Mdb.dll",
+        "netstandardtask/Mono.Cecil.Mdb.pdb",
+        "netstandardtask/Mono.Cecil.Pdb.dll",
+        "netstandardtask/Mono.Cecil.Pdb.pdb",
+        "netstandardtask/Mono.Cecil.Rocks.dll",
+        "netstandardtask/Mono.Cecil.Rocks.pdb",
+        "netstandardtask/Mono.Cecil.dll",
+        "netstandardtask/Mono.Cecil.pdb"
+      ]
+    },
+    "PropertyChanged.Fody/2.5.13": {
+      "sha512": "RJ3oo1IIpLfhaU1yx9j6yRrkWHvES8JUBZ1hvBUb82rDYNbew39fsAMAJEiUVIzE3pofuZba3vx7A7SUsf8wQg==",
+      "type": "package",
+      "path": "propertychanged.fody/2.5.13",
+      "files": [
+        ".signature.p7s",
+        "build/PropertyChanged.Fody.props",
+        "lib/net452/PropertyChanged.dll",
+        "lib/net452/PropertyChanged.xml",
+        "lib/netstandard1.0/PropertyChanged.dll",
+        "lib/netstandard1.0/PropertyChanged.xml",
+        "netclassicweaver/PropertyChanged.Fody.dll",
+        "netclassicweaver/PropertyChanged.Fody.pdb",
+        "netstandardweaver/PropertyChanged.Fody.dll",
+        "netstandardweaver/PropertyChanged.Fody.pdb",
+        "propertychanged.fody.2.5.13.nupkg.sha512",
+        "propertychanged.fody.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.6.1": [
+      "Fody >= 3.2.12",
+      "PropertyChanged.Fody >= 2.5.13"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Ryad\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Ryad\\Documents\\MemoryGame\\Memory7\\Memory\\Memory\\Memory.csproj",
+      "projectName": "Memory",
+      "projectPath": "C:\\Users\\Ryad\\Documents\\MemoryGame\\Memory7\\Memory\\Memory\\Memory.csproj",
+      "packagesPath": "C:\\Users\\Ryad\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ryad\\Documents\\MemoryGame\\Memory7\\Memory\\Memory\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\Ryad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net461"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net461": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net461": {
+        "dependencies": {
+          "Fody": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[3.2.12, )"
+          },
+          "PropertyChanged.Fody": {
+            "target": "Package",
+            "version": "[2.5.13, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}
