@@ -9,8 +9,15 @@ namespace Memory
     /// <summary>
     /// Een pagina waar alle paginas van gaan functioneren.
     /// </summary>
-    public class BasePage : Page
+    public class BasePage<VM> : Page
+        where VM : BaseViewModel, new()
     {
+        #region private members
+
+        private VM mViewModel;
+
+        #endregion
+
         #region public properties
         // animatie onload
         public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideFromRight;
@@ -20,6 +27,19 @@ namespace Memory
 
         // lengte animatie
         public float SlideSeconds { get; set; } = 0.8f;
+
+        public VM ViewModel {
+            get { return mViewModel; }
+            set
+            {
+                if (mViewModel == value)
+                    return;
+
+                mViewModel = value;
+
+                this.DataContext = mViewModel;
+            }
+        }
 
         #endregion
 
@@ -33,6 +53,8 @@ namespace Memory
 
             //check of pagina geladen is
             this.Loaded += BasePage_Loaded;
+
+            this.ViewModel = new VM();
         }
 
         #endregion

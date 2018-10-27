@@ -21,6 +21,19 @@ namespace Memory
                 // Vindt de juiste pagina
                 case ApplicatiePage.Hoofdmenu:
                     return new HoofdMenuPage();
+
+                case ApplicatiePage.Newgame:
+                    return new NewGamePage();
+
+                case ApplicatiePage.LoadGame:
+                    return new LoadGamePage();
+
+                case ApplicatiePage.Stats:
+                    return new HighScorePage();
+
+                case ApplicatiePage.Settings:
+                    return new SettingsPage();
+
                 default:
                     Debugger.Break();
                     return null;

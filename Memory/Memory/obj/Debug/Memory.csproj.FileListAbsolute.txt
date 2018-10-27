@@ -103,3 +103,11 @@ C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\bin\Debug\Assets\Themes
 C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\bin\Debug\Memory.exe.config
 C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\bin\Debug\Memory.exe
 C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\bin\Debug\Memory.pdb
+C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\obj\Debug\Pages\NewGamePage.g.cs
+C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\obj\Debug\Pages\NewGamePage.baml
+C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\obj\Debug\Pages\HighScorePage.g.cs
+C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\obj\Debug\Pages\SettingsPage.g.cs
+C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\obj\Debug\Pages\LoadGamePage.g.cs
+C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\obj\Debug\Pages\HighScorePage.baml
+C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\obj\Debug\Pages\SettingsPage.baml
+C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\obj\Debug\Pages\LoadGamePage.baml

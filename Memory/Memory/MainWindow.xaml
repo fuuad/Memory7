@@ -10,5 +10,8 @@
 
     <Grid>
         <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicatiePageValueConverter}}"/>
+        <Grid.Background>
+            <SolidColorBrush Color="blue" Opacity="0.3"/>
+        </Grid.Background>
     </Grid>
 </Window>

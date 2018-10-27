@@ -17,7 +17,7 @@ namespace Memory
 
         #region Public Properties
 
-        public ApplicatiePage CurrentPage { get; set; } = ApplicatiePage.Hoofdmenu;
+        public ApplicatiePage CurrentPage { get; set; } = ApplicatiePage.Stats;
 
         #endregion
 
