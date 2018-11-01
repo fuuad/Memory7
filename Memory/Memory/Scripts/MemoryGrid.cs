@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -14,86 +13,91 @@ namespace Memory
 {
     public class MemoryGrid
     {
+
+        #region private members
+
         private Grid grid;
         private int cols;
         private int rows;
-        bool allowclick = true;
+        private bool allowclick = true;
         private int currentplayer;
         private int player1score = 0;
         private int player2score = 0;
         private int correctcount = 0;
         private string theme = "Default";
-        Label score1 = new Label();
-        Label score2 = new Label();
-        Label title = new Label();
-        MediaPlayer Sound1 = new MediaPlayer();
-        MediaPlayer Sound2 = new MediaPlayer();
-        MediaPlayer Sound3 = new MediaPlayer();
-        Image firstGuess;
-        String[] directories = Directory.GetDirectories("Assets/Themes/");
-        String[] files;
+        private Label score1 = new Label();
+        private Label score2 = new Label();
+        private Label title = new Label();
+        private MediaPlayer Sound1 = new MediaPlayer();
+        private MediaPlayer Sound2 = new MediaPlayer();
+        private MediaPlayer Sound3 = new MediaPlayer();
+        private Image firstGuess;
+        private String[] directories = Directory.GetDirectories("Assets/Themes/");
+        private String[] files;
 
-        /*
-        for each element in directories.
-        dropdown met alle namen van folders.
-        selecteer dat en zet die naam als var theme.
-        */
-
-
-        private void GetTheme() {
-            foreach (string s in directories)
-            {
-                Console.WriteLine(s);
-            }
-        }
+        #endregion
                      
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="grid">Het grid waar de kaarten in komen</param>
+        /// <param name="cols"> hoeveel kolommen het grid krijgt</param>
+        /// <param name="rows"> hoeveel rijen het grid krijgt</param>
         public MemoryGrid(Grid grid, int cols, int rows)
         {
-    
-
-            theme = Microsoft.VisualBasic.Interaction.InputBox("Welk Thema wil je? Default of Warcraft?", "Vraagje", "Default");
+            theme = Microsoft.VisualBasic.Interaction.InputBox("Welk Thema wil je? Default of Warcraft?", "Vraagje", "");
             this.grid = grid;
             this.cols = cols;
             this.rows = rows;
+
             InitializeGameGrid(cols, rows);
-            InitializeGameGrid(1, 0);
-            AddTitle();
-            AddScores();
             GetImagesList();
             AddImages();
             setBackground();
-            GetTheme();
         }
 
+        /// <summary>
+        /// verandert de achtergrond en muziek van het spel afhankelijk van gekozen thema.
+        /// </summary>
         private void setBackground()
         {
             ImageBrush myBrush = new ImageBrush();
-            switch (theme)
+            if (theme != string.Empty)
             {
-                case "Default":
-                    myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Default/Assets/background.png", UriKind.Relative));
-                    Sound3.Volume = 0.1;
-                    Sound3.Open((new Uri("Assets/Themes/Default/Audio/background.mp3", UriKind.Relative)));
-                    Sound3.Play();
-                    Sound3.MediaEnded += new EventHandler(Media_Ended);
-                    break;
-                case "Warcraft":
-                    myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Warcraft/Assets/background.png", UriKind.Relative));
-                    Sound3.Volume = 0.05;
-                    Sound3.Open((new Uri("Assets/Themes/Warcraft/Audio/background.mp3", UriKind.Relative)));
-                    Sound3.Play();
-                    Sound3.MediaEnded += new EventHandler(Media_Ended);
-                    break;
-                default:
-                    myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Default/Assets/background.png", UriKind.Relative));
-                    Sound3.Volume = 0.1;
-                    Sound3.Open((new Uri("Assets/Themes/Default/Audio/background.mp3", UriKind.Relative)));
-                    Sound3.Play();
-                    Sound3.MediaEnded += new EventHandler(Media_Ended);
-                    break;
+                switch (theme)
+                {
+                    case "Default":
+                        myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Default/Assets/background.png", UriKind.Relative));
+                        Sound3.Volume = 0.1;
+                        Sound3.Open((new Uri("Assets/Themes/Default/Audio/background.mp3", UriKind.Relative)));
+                        Sound3.Play();
+                        Sound3.MediaEnded += new EventHandler(Media_Ended);
+                        break;
+                    case "Warcraft":
+                        myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Warcraft/Assets/background.png", UriKind.Relative));
+                        Sound3.Volume = 0.05;
+                        Sound3.Open((new Uri("Assets/Themes/Warcraft/Audio/background.mp3", UriKind.Relative)));
+                        Sound3.Play();
+                        Sound3.MediaEnded += new EventHandler(Media_Ended);
+                        break;
+                    default:
+                        myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Default/Assets/background.png", UriKind.Relative));
+                        Sound3.Volume = 0.1;
+                        Sound3.Open((new Uri("Assets/Themes/Default/Audio/background.mp3", UriKind.Relative)));
+                        Sound3.Play();
+                        Sound3.MediaEnded += new EventHandler(Media_Ended);
+                        break;
+                }
+                grid.Background = myBrush;
             }
-            grid.Background = myBrush;
         }
+
+        /// <summary>
+        /// Zodra muziek afloopt replay.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Media_Ended(object sender, EventArgs e)
         {
             Sound3.Position = TimeSpan.Zero;
@@ -104,7 +108,11 @@ namespace Memory
         {
             for (int i = 0; i < rows; i++)
             {
+                var lab = new Label();
+                lab.Content = "text";
+
                 grid.RowDefinitions.Add(new RowDefinition());
+                Grid.SetRow(lab,i);
             }
             for (int i = 0; i < cols; i++)
             {
@@ -112,6 +120,9 @@ namespace Memory
             }
         }
 
+        /// <summary>
+        /// voegt label toe aan de ui
+        /// </summary>
         private void AddTitle()
         {
             Label title = new Label();
@@ -130,6 +141,7 @@ namespace Memory
             grid.Children.Add(vb);
         }
 
+        //voegt text toe om scores bij te houden aan de ui
         private void AddScores()
         {
             score1.Content = "Player 1 Score :" + " " + player1score;
@@ -163,8 +175,13 @@ namespace Memory
             grid.Children.Add(vb2);
         }
 
+
         List<ImageSource> images = new List<ImageSource>();
 
+        /// <summary>
+        /// pakt de images uit het gekozen thema en plaatst die in een lijst.
+        /// </summary>
+        /// <returns></returns>
         private List<ImageSource> GetImagesList()
         {
 
@@ -196,6 +213,9 @@ namespace Memory
             return images;
         }
 
+        /// <summary>
+        /// voegt de images toe aan het game grid
+        /// </summary>
         private async void AddImages()
         {
             var rand = new Random();
@@ -222,6 +242,11 @@ namespace Memory
             allowclick = true;
         }
 
+        /// <summary>
+        /// houdt de klik actie bij van de user wanneer die op een plaatje klikt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void CardClick(object sender, MouseButtonEventArgs e)
         {
             if (allowclick == true)

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ryad\Documents\MemoryGame\Memory7\Memory\Memory\App.xaml
-6-861115417
+7137724590
 32-1257310810
-23-1325605298
+24154283239
 161950744573
-MainWindow.xaml;Pages\HighScorePage.xaml;Pages\SettingsPage.xaml;Pages\LoadGamePage.xaml;Pages\NewGamePage.xaml;Pages\HoofdMenuPage.xaml;
+Controls\SettingsControl.xaml;MainWindow.xaml;Pages\GamePlayPage.xaml;Pages\HighScorePage.xaml;Pages\LoadGamePage.xaml;Pages\NewGamePage.xaml;Pages\HoofdMenuPage.xaml;
 
 False
 

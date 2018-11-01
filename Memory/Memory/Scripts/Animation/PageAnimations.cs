@@ -11,13 +11,18 @@ namespace Memory
 {
     public static class PageAnimations
     {
+
+        /// <summary>
+        /// animatie voor het inkomen pagina
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="seconds"></param>
+        /// <returns></returns>
         public static async Task SlideAndFadeFromRight(this Page page, float seconds)
         {
             var sb = new Storyboard();
 
             sb.AddSlideFromRight(seconds, page.WindowWidth);
-
-            sb.AddFadeIn(seconds);
 
             sb.Begin(page);
 
@@ -26,13 +31,17 @@ namespace Memory
             await Task.Delay((int)(seconds * 1000));
         }
 
+        /// <summary>
+        /// animatie voor vertrekkende pagina
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="seconds"></param>
+        /// <returns></returns>
         public static async Task SlideAndFadeToLeft(this Page page, float seconds)
         {
             var sb = new Storyboard();
 
             sb.AddSlideToLeft(seconds, page.WindowWidth);
-
-            sb.AddFadeOut(seconds);
 
             sb.Begin(page);
 

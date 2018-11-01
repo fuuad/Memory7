@@ -8,34 +8,33 @@ namespace Memory
     /// </summary>
     public class WindowViewModel : BaseViewModel
     {
-        #region Private Member
+        #region Private Members
 
+        /// <summary>
+        /// de applicatie window.
+        /// </summary>
         private Window mWindow;
 
         #endregion
 
-
         #region Public Properties
 
-        public ApplicatiePage CurrentPage { get; set; } = ApplicatiePage.Stats;
+        /// <summary>
+        /// Geeft aan huidig zichtbare pagina in de applicatie
+        /// </summary>
+        public ApplicatiePage CurrentPage { get; set; } = ApplicatiePage.Hoofdmenu;
 
         #endregion
-
 
         #region Constructor
 
         /// <summary>
-        /// Default constructor
+        /// Standaard constructor
         /// </summary>
         public WindowViewModel(Window window)
         {
             mWindow = window;
-
         }
-
-        #endregion
-
-        #region Private Helpers
 
         #endregion
     }

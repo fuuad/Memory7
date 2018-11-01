@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Memory
@@ -10,82 +11,111 @@ namespace Memory
     /// </summary>
     public class HoofdMenuViewModel : BaseViewModel
     {
-        #region Private Member
+        #region commands
+
+        /// <summary>
+        /// Command om naar new page te switchen
+        /// </summary>
+        public ICommand NewGamePageCommand { get; set; }
 
 
+        /// <summary>
+        /// command om naar gameplay page te switchen
+        /// </summary>
+        public ICommand GameplayPageCommand { get; set; }
 
-        #endregion
+        /// <summary>
+        /// command om naar loadgame page te switchen
+        /// </summary>
+        public ICommand LoadGamePageCommand { get; set; }
 
-
-        #region Public Properties
-        
-        public string StartButton { get; set; }
-
-        #endregion
-
-        #region Commands
-
-        public ICommand NewCommand { get; set; }
-
-        public ICommand LoadCommand { get; set; }
-
+        /// <summary>
+        /// command om naar de statistieken page te switchen
+        /// </summary>
         public ICommand ScoreCommand { get; set; }
 
-        public ICommand SettingsCommand { get; set; }
-
-        public ICommand QuitCommand { get; set; }
+        /// <summary>
+        /// command om naar de hoofdmenu page te switchen
+        /// </summary>
+        public ICommand HoofdMenuCommand { get; set; }
 
         #endregion
 
         #region Constructor
 
         /// <summary>
-        /// Default constructor
+        /// Standaard Constructor
         /// </summary>
         public HoofdMenuViewModel()
         {
-            NewCommand = new RelayCommand(async () => await NewGame());
 
-            LoadCommand = new RelayCommand(async () => await LoadGame());
+            NewGamePageCommand = new RelayCommand(async () => await SwitchToNewGamePage());
 
-            ScoreCommand = new RelayCommand(async () => await OpenScore());
+            GameplayPageCommand = new RelayCommand(async () => await SwitchToGameplayPage());
 
-            SettingsCommand = new RelayCommand(async () => await OpenSettings());
+            LoadGamePageCommand = new RelayCommand(async () => await SwitchToLoadGamePage());
 
-            QuitCommand = new RelayCommand(async () => await QuitGame());
+            ScoreCommand = new RelayCommand(async () => await SwitchToStatsPage());
+
+            HoofdMenuCommand = new RelayCommand(async () => await SwitchToHoofdMenuPage());
+
         }
+
         #endregion
 
-
-        public async Task NewGame()
+        /// <summary>
+        /// Set de CurrentPage die in mainwindow staat op en set hem naar de newgame page.
+        /// </summary>
+        /// <returns>returns de newgame pagina en wacht 1 miliseconde</returns>
+        public async Task SwitchToNewGamePage()
         {
-            await Task.Delay(500);
-            Console.WriteLine("NewGameClicked");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicatiePage.Newgame;
+
+            await Task.Delay(1);
         }
 
-        public async Task LoadGame()
+        /// <summary>
+        /// Set de CurrentPage die in mainwindow staat op en set hem naar de gameplay page.
+        /// </summary>
+        /// <returns>returns de gameplay pagina en wacht 1 miliseconde</returns>
+        public async Task SwitchToGameplayPage()
         {
-            await Task.Delay(500);
-            Console.WriteLine("LoadGameClicked");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicatiePage.Gameplay;
+
+            await Task.Delay(1);
         }
 
-        public async Task OpenScore()
+        /// <summary>
+        /// Set de CurrentPage die in mainwindow staat op en set hem naar loadgame page.
+        /// </summary>
+        /// <returns></returns>
+        public async Task SwitchToLoadGamePage()
         {
-            await Task.Delay(500);
-            Console.WriteLine("OpenScoreClicked");
-        }
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicatiePage.LoadGame;
 
-        public async Task OpenSettings()
+            await Task.Delay(1);
+        }
+        
+        /// <summary>
+        /// Set de CurrentPage die in mainwindow staat op en set hem naar statistieken page.
+        /// </summary>
+        /// <returns></returns>
+        public async Task SwitchToStatsPage()
         {
-            await Task.Delay(500);
-            Console.WriteLine("OpenSettingsClicked");
-        }
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicatiePage.Stats;
 
-        public async Task QuitGame()
+            await Task.Delay(1);
+        }
+        
+        /// <summary>
+        /// Set de CurrentPage die in mainwindow staat op en set hem naar hoofdmenu page.
+        /// </summary>
+        /// <returns></returns>
+        public async Task SwitchToHoofdMenuPage()
         {
-            await Task.Delay(500);
-            Console.WriteLine("QuitGameClicked");
-        }
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicatiePage.Hoofdmenu;
 
+            await Task.Delay(1);
+        }
     }
 }

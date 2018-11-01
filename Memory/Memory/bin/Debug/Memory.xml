@@ -1,0 +1,528 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Memory</name>
+    </assembly>
+    <members>
+        <member name="T:Memory.SettingsControl">
+            <summary>
+            Interaction logic for SettingsControl.xaml
+            </summary>
+            <summary>
+            SettingsControl
+            </summary>
+        </member>
+        <member name="M:Memory.SettingsControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Memory.GamePlayPage">
+            <summary>
+            Interaction logic for HoofdMenuPage.xaml
+            </summary>
+            <summary>
+            GamePlayPage
+            </summary>
+        </member>
+        <member name="M:Memory.GamePlayPage.#ctor">
+            <summary>
+            standaard constructor
+            </summary>
+        </member>
+        <member name="M:Memory.GamePlayPage.initGameGrid">
+            <summary>
+            Initialiseerd de gamegrid en de kaarten.
+            </summary>
+        </member>
+        <member name="M:Memory.GamePlayPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Memory.HighScorePage">
+            <summary>
+            Interaction logic for HoofdMenuPage.xaml
+            </summary>
+            <summary>
+            HighScorePage
+            </summary>
+        </member>
+        <member name="M:Memory.HighScorePage.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Memory.HighScorePage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Memory.LoadGamePage">
+            <summary>
+            Interaction logic for HoofdMenuPage.xaml
+            </summary>
+            <summary>
+            LoadGamePage
+            </summary>
+        </member>
+        <member name="M:Memory.LoadGamePage.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Memory.LoadGamePage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Memory.NewGamePage">
+            <summary>
+            Interaction logic for HoofdMenuPage.xaml
+            </summary>
+            <summary>
+            NewGamePage
+            </summary>
+        </member>
+        <member name="M:Memory.NewGamePage.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Memory.NewGamePage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Memory.BasePage`1">
+            <summary>
+            Een pagina waar alle paginas van gaan functioneren.
+            </summary>
+        </member>
+        <member name="P:Memory.BasePage`1.PageLoadAnimation">
+            <summary>
+            /// animatie onload
+            </summary>
+        </member>
+        <member name="P:Memory.BasePage`1.PageUnloadAnimation">
+            <summary>
+            animatie unload
+            </summary>
+        </member>
+        <member name="P:Memory.BasePage`1.SlideSeconds">
+            <summary>
+            lengte animatie
+            </summary>
+        </member>
+        <member name="P:Memory.BasePage`1.ViewModel">
+            <summary>
+            set de juiste viewmodel per pagina.
+            </summary>
+        </member>
+        <member name="M:Memory.BasePage`1.#ctor">
+            <summary>
+            standaard constructor die animaties runt wanneer een pagina geladen wordt.
+            </summary>
+        </member>
+        <member name="M:Memory.BasePage`1.BasePage_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            zodra de pagina geladen is animate de pagina
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Memory.BasePage`1.AnimateIn">
+            <summary>
+            de animatie voor een inkomende pagina
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.BasePage`1.AnimateOut">
+            <summary>
+            de animatie voor een verlaten pagina
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Memory.HoofdMenuPage">
+            <summary>
+            Interaction logic for HoofdMenuPage.xaml
+            </summary>
+            <summary>
+            HoofdMenuPage
+            </summary>
+        </member>
+        <member name="M:Memory.HoofdMenuPage.#ctor">
+            <summary>
+            Standaard Constructor
+            </summary>
+        </member>
+        <member name="M:Memory.HoofdMenuPage.#ctor(Memory.HoofdMenuViewModel)">
+            <summary>
+            Constructor with specific view model
+            </summary>
+        </member>
+        <member name="M:Memory.HoofdMenuPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Memory.PageAnimations.SlideAndFadeFromRight(System.Windows.Controls.Page,System.Single)">
+            <summary>
+            animatie voor het inkomen pagina
+            </summary>
+            <param name="page"></param>
+            <param name="seconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.PageAnimations.SlideAndFadeToLeft(System.Windows.Controls.Page,System.Single)">
+            <summary>
+            animatie voor vertrekkende pagina
+            </summary>
+            <param name="page"></param>
+            <param name="seconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.StoryBoardHelpers.AddSlideFromRight(System.Windows.Media.Animation.Storyboard,System.Single,System.Double,System.Single)">
+            <summary>
+            alle animaties voor paginas
+            </summary>
+            <param name="storyboard"></param>
+            <param name="seconds"></param>
+            <param name="offset"></param>
+            <param name="decelerationRatio"></param>
+        </member>
+        <member name="T:Memory.ApplicatiePageValueConverter">
+            <summary>
+            Converteert de <see cref="T:Memory.ApplicatiePage" /> naar een echte pagina
+            </summary>
+        </member>
+        <member name="M:Memory.ApplicatiePageValueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            een switch case die reageert wanneer de applicatiePage enum wordt veranderd en dan de pagina in de mainwindow <see cref="F:Memory.MainWindow.MainFrame"/> veranderd.
+            </summary>
+            <param name="value">wat de huidige pagina wordt</param>=
+            <returns> de benodigde pagina</returns>
+        </member>
+        <member name="M:Memory.ApplicatiePageValueConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            een overrideable method die de convertion terug draait.
+            </summary>
+            <param name="value"> waarde</param>
+            <param name="targetType">wat je naar wilt converten</param>
+            <param name="parameter"> wat je wilt gaan converten</param>
+            <param name="culture"> informatie over omgeving</param>
+            <returns></returns>
+        </member>
+        <member name="T:Memory.BaseValueConverter`1">
+            <summary>
+            Direct gelinkt aan xaml
+            </summary>
+            <typeparam name="T">Het type dat wordt geconverteert</typeparam>
+        </member>
+        <member name="M:Memory.BaseValueConverter`1.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Zorgt dat er maar 1 statische converter aanwezig is in het programma
+            </summary>
+            <param name="serviceProvider"></param>
+            <returns>new instance als niet bestaats</returns>
+        </member>
+        <member name="M:Memory.BaseValueConverter`1.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            De methode om types te converteren
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.BaseValueConverter`1.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            De methode om originele type terug te halen
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Memory.BooleanToVisiblityConverter">
+            <summary>
+            A converter that takes in a boolean and returns a <see cref="T:System.Windows.Visibility"/>
+            </summary>
+        </member>
+        <member name="T:Memory.RelayCommand">
+            <summary>
+            A basic command that runs an Action
+            </summary>
+        </member>
+        <member name="F:Memory.RelayCommand.mAction">
+            <summary>
+            The action to run
+            </summary>
+        </member>
+        <member name="E:Memory.RelayCommand.CanExecuteChanged">
+            <summary>
+            The event thats fired when the <see cref="M:Memory.RelayCommand.CanExecute(System.Object)"/> value has changed
+            </summary>
+        </member>
+        <member name="M:Memory.RelayCommand.#ctor(System.Action)">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Memory.RelayCommand.CanExecute(System.Object)">
+            <summary>
+            A relay command can always execute
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.RelayCommand.Execute(System.Object)">
+            <summary>
+            Executes the commands Action
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="T:Memory.HoofdMenuViewModel">
+            <summary>
+            The View Model for the HoofdMenu
+            </summary>
+        </member>
+        <member name="P:Memory.HoofdMenuViewModel.NewGamePageCommand">
+            <summary>
+            Command om naar new page te switchen
+            </summary>
+        </member>
+        <member name="P:Memory.HoofdMenuViewModel.GameplayPageCommand">
+            <summary>
+            command om naar gameplay page te switchen
+            </summary>
+        </member>
+        <member name="P:Memory.HoofdMenuViewModel.LoadGamePageCommand">
+            <summary>
+            command om naar loadgame page te switchen
+            </summary>
+        </member>
+        <member name="P:Memory.HoofdMenuViewModel.ScoreCommand">
+            <summary>
+            command om naar de statistieken page te switchen
+            </summary>
+        </member>
+        <member name="P:Memory.HoofdMenuViewModel.HoofdMenuCommand">
+            <summary>
+            command om naar de hoofdmenu page te switchen
+            </summary>
+        </member>
+        <member name="M:Memory.HoofdMenuViewModel.#ctor">
+            <summary>
+            Standaard Constructor
+            </summary>
+        </member>
+        <member name="M:Memory.HoofdMenuViewModel.SwitchToNewGamePage">
+            <summary>
+            Set de CurrentPage die in mainwindow staat op en set hem naar de newgame page.
+            </summary>
+            <returns>returns de newgame pagina en wacht 1 miliseconde</returns>
+        </member>
+        <member name="M:Memory.HoofdMenuViewModel.SwitchToGameplayPage">
+            <summary>
+            Set de CurrentPage die in mainwindow staat op en set hem naar de gameplay page.
+            </summary>
+            <returns>returns de gameplay pagina en wacht 1 miliseconde</returns>
+        </member>
+        <member name="M:Memory.HoofdMenuViewModel.SwitchToLoadGamePage">
+            <summary>
+            Set de CurrentPage die in mainwindow staat op en set hem naar loadgame page.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.HoofdMenuViewModel.SwitchToStatsPage">
+            <summary>
+            Set de CurrentPage die in mainwindow staat op en set hem naar statistieken page.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.HoofdMenuViewModel.SwitchToHoofdMenuPage">
+            <summary>
+            Set de CurrentPage die in mainwindow staat op en set hem naar hoofdmenu page.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Memory.WindowViewModel">
+            <summary>
+            The View Model for the custom flat window
+            </summary>
+        </member>
+        <member name="F:Memory.WindowViewModel.mWindow">
+            <summary>
+            de applicatie window.
+            </summary>
+        </member>
+        <member name="P:Memory.WindowViewModel.CurrentPage">
+            <summary>
+            Geeft aan huidig zichtbare pagina in de applicatie
+            </summary>
+        </member>
+        <member name="M:Memory.WindowViewModel.#ctor(System.Windows.Window)">
+            <summary>
+            Standaard constructor
+            </summary>
+        </member>
+        <member name="T:Memory.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Memory.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Memory.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Memory.ApplicatiePage">
+            <summary>
+            huidige pagina die applicatie laat zien.
+            </summary>
+        </member>
+        <member name="F:Memory.ApplicatiePage.Hoofdmenu">
+            <summary>
+            Hoofd Menu is waar je begint.
+            </summary>
+        </member>
+        <member name="F:Memory.ApplicatiePage.Newgame">
+            <summary>
+            Nieuw Spel menu waar je een spel kan opzetten en beginnen.
+            </summary>
+        </member>
+        <member name="F:Memory.ApplicatiePage.Gameplay">
+            <summary>
+            Gameplay scherm waar je het spel speelt.
+            </summary>
+        </member>
+        <member name="F:Memory.ApplicatiePage.LoadGame">
+            <summary>
+            Opgeslagen Spel menu waar je een spel kan laden om verder te spelen.
+            </summary>
+        </member>
+        <member name="F:Memory.ApplicatiePage.Stats">
+            <summary>
+            Statistieken menu om de scores te bekijken.
+            </summary>
+        </member>
+        <member name="T:Memory.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Memory.MainWindow.#ctor">
+            <summary>
+            Standaard Constructor
+            </summary>
+        </member>
+        <member name="M:Memory.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Memory.MemoryGrid.#ctor(System.Windows.Controls.Grid,System.Int32,System.Int32)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="grid">Het grid waar de kaarten in komen</param>
+            <param name="cols"> hoeveel kolommen het grid krijgt</param>
+            <param name="rows"> hoeveel rijen het grid krijgt</param>
+        </member>
+        <member name="M:Memory.MemoryGrid.setBackground">
+            <summary>
+            verandert de achtergrond en muziek van het spel afhankelijk van gekozen thema.
+            </summary>
+        </member>
+        <member name="M:Memory.MemoryGrid.Media_Ended(System.Object,System.EventArgs)">
+            <summary>
+            Zodra muziek afloopt replay.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Memory.MemoryGrid.AddTitle">
+            <summary>
+            voegt label toe aan de ui
+            </summary>
+        </member>
+        <member name="M:Memory.MemoryGrid.GetImagesList">
+            <summary>
+            pakt de images uit het gekozen thema en plaatst die in een lijst.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.MemoryGrid.AddImages">
+            <summary>
+            voegt de images toe aan het game grid
+            </summary>
+        </member>
+        <member name="M:Memory.MemoryGrid.CardClick(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            houdt de klik actie bij van de user wanneer die op een plaatje klikt.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Memory.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Memory.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Memory.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

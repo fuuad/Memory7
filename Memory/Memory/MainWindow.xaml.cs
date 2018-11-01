@@ -10,10 +10,6 @@ namespace Memory
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int NR_OF_COLS = 4;
-        private int NR_OF_ROWS = 4;
-        MemoryGrid grid;
-
         #region Constructor
 
         /// <summary>
@@ -22,27 +18,9 @@ namespace Memory
         public MainWindow()
         {
             InitializeComponent();
-
             DataContext = new WindowViewModel(this);
         }
-        
         #endregion
-
-        #region methods
-
-        private void NewGame()
-        {
-            //grid = new MemoryGrid(GameGrid, NR_OF_ROWS, NR_OF_COLS);
-        }
-        #endregion
-
-        #region public properties
-
-        public ApplicatiePage CurrentPage { get; set; } = ApplicatiePage.Hoofdmenu;
-
-        #endregion
-
-        
     }
 
 }

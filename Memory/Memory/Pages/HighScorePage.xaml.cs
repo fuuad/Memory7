@@ -20,6 +20,9 @@ namespace Memory
     /// </summary>
     public partial class HighScorePage : BasePage<HoofdMenuViewModel>
     {
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public HighScorePage()
         {
             InitializeComponent();

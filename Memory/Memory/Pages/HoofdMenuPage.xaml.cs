@@ -20,9 +20,24 @@ namespace Memory
     /// </summary>
     public partial class HoofdMenuPage : BasePage<HoofdMenuViewModel>
     {
+        #region Constructors
+        
+        /// <summary>
+        /// Standaard Constructor
+        /// </summary>
         public HoofdMenuPage()
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Constructor with specific view model
+        /// </summary>
+        public HoofdMenuPage(HoofdMenuViewModel specificViewModel) : base(specificViewModel)
+        {
+            InitializeComponent();
+        }
+
+        #endregion
     }
 }

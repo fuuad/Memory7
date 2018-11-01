@@ -10,6 +10,13 @@ namespace Memory
 {
     public static class StoryBoardHelpers
     {
+        /// <summary>
+        /// alle animaties voor paginas
+        /// </summary>
+        /// <param name="storyboard"></param>
+        /// <param name="seconds"></param>
+        /// <param name="offset"></param>
+        /// <param name="decelerationRatio"></param>
         public static void AddSlideFromRight(this Storyboard storyboard, float seconds, double offset, float decelerationRatio = 0.09f)
         {
 

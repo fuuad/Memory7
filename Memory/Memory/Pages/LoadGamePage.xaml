@@ -14,7 +14,8 @@
         </Grid.ColumnDefinitions>
 
         <Grid.Background>
-            <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 800 800" ImageSource="../Assets/Menus/HoofdMenu/background.png"/>
+            <SolidColorBrush Color="White"></SolidColorBrush>
+            <!--<ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 800 800" ImageSource="../Assets/Menus/HoofdMenu/background.png"/>-->
         </Grid.Background>
 
         <Viewbox Width="auto">
@@ -35,6 +36,13 @@
                         Width="280"
                         Height="40"
                         Command="{Binding LoadMultiCommand}"
+                        Margin="60,5"/>
+                
+                <Button Content="Terug"
+                        x:Name="terugMenu"
+                        Width="280"
+                        Height="40"
+                        Command="{Binding HoofdMenuCommand}"
                         Margin="60,5"/>
             </StackPanel>
         </Viewbox>

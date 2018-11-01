@@ -16,19 +16,33 @@ namespace Memory
 
         private VM mViewModel;
 
+        private HoofdMenuViewModel specificViewModel;
+
         #endregion
 
         #region public properties
-        // animatie onload
+
+        /// <summary>
+        /// /// animatie onload
+        /// </summary>
         public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideFromRight;
 
-        // animatie unload
+        /// <summary>
+        /// animatie unload
+        /// </summary>
         public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideToLeft;
 
-        // lengte animatie
+        /// <summary>
+        /// lengte animatie
+        /// </summary>
         public float SlideSeconds { get; set; } = 0.8f;
 
-        public VM ViewModel {
+
+        /// <summary>
+        /// set de juiste viewmodel per pagina.
+        /// </summary>
+        public VM ViewModel
+        {
             get { return mViewModel; }
             set
             {
@@ -45,6 +59,10 @@ namespace Memory
 
         #region Constructor
 
+
+        /// <summary>
+        /// standaard constructor die animaties runt wanneer een pagina geladen wordt.
+        /// </summary>
         public BasePage()
         {
             // animatie bij hide.
@@ -57,16 +75,29 @@ namespace Memory
             this.ViewModel = new VM();
         }
 
+        public BasePage(HoofdMenuViewModel specificViewModel)
+        {
+            this.specificViewModel = specificViewModel;
+        }
+
         #endregion
 
         #region Animation Load / Unload
-
+        /// <summary>
+        /// zodra de pagina geladen is animate de pagina
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BasePage_Loaded(object sender, RoutedEventArgs e)
         {
             //animeert de pagina inkomend.
             await AnimateIn();
         }
 
+        /// <summary>
+        /// de animatie voor een inkomende pagina
+        /// </summary>
+        /// <returns></returns>
         public async Task AnimateIn()
         {
             if (PageLoadAnimation == PageAnimation.None)
@@ -82,6 +113,10 @@ namespace Memory
             }
         }
 
+        /// <summary>
+        /// de animatie voor een verlaten pagina
+        /// </summary>
+        /// <returns></returns>
         public async Task AnimateOut()
         {
             if (PageUnloadAnimation == PageAnimation.None)

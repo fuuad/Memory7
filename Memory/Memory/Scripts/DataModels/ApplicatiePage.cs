@@ -16,18 +16,18 @@
         Newgame = 1,
 
         /// <summary>
+        /// Gameplay scherm waar je het spel speelt.
+        /// </summary>
+        Gameplay = 2,
+
+        /// <summary>
         /// Opgeslagen Spel menu waar je een spel kan laden om verder te spelen.
         /// </summary>
-        LoadGame = 2,
+        LoadGame = 3,
 
         /// <summary>
         /// Statistieken menu om de scores te bekijken.
         /// </summary>
-        Stats = 3,
-
-        /// <summary>
-        /// Instellingen menu om de instellingen te wijzigen.
-        /// </summary>
-        Settings = 4,
+        Stats = 4,
     }
 }

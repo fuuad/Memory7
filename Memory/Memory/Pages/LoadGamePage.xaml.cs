@@ -20,6 +20,9 @@ namespace Memory
     /// </summary>
     public partial class LoadGamePage : BasePage<HoofdMenuViewModel>
     {
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public LoadGamePage()
         {
             InitializeComponent();
