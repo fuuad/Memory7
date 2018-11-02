@@ -64,11 +64,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\SettingsControl.xaml.cs">
-      <DependentUpon>SettingsControl.xaml</DependentUpon>
+    <Compile Include="Controls\SettingsControlMenus.xaml.cs">
+      <DependentUpon>SettingsControlMenus.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GamePlayPage.xaml.cs">
-      <DependentUpon>GamePlayPage.xaml</DependentUpon>
+    <Compile Include="Controls\SettingsControlInGame.xaml.cs">
+      <DependentUpon>SettingsControlInGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\HighScorePage.xaml.cs">
       <DependentUpon>HighScorePage.xaml</DependentUpon>
@@ -86,14 +86,20 @@
     </Compile>
     <Compile Include="Scripts\Animation\PageAnimations.cs" />
     <Compile Include="Scripts\Animation\StoryBoardHelpers.cs" />
+    <Compile Include="Scripts\Timer.cs" />
     <Compile Include="Scripts\ValueConverters\ApplicatiePageValueConverter.cs" />
     <Compile Include="Scripts\ValueConverters\BaseValueConverter.cs" />
     <Compile Include="Scripts\ValueConverters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Scripts\ViewModel\BaseViewModel.cs" />
     <Compile Include="Scripts\ViewModel\RelayCommand.cs" />
     <Compile Include="Scripts\ViewModel\HoofdMenuViewModel.cs" />
+    <Compile Include="Scripts\ViewModel\Scores.cs" />
     <Compile Include="Scripts\ViewModel\WindowViewModel.cs" />
-    <Page Include="Controls\SettingsControl.xaml">
+    <Page Include="Controls\SettingsControlMenus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SettingsControlInGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,10 +116,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\GamePlayPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\HighScorePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

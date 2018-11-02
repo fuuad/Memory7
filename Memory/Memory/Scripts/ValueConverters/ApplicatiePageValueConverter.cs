@@ -31,14 +31,14 @@ namespace Memory
                 case ApplicatiePage.Newgame:
                     return new NewGamePage();
 
-                case ApplicatiePage.Gameplay:
-                    return new GamePlayPage();
-
                 case ApplicatiePage.LoadGame:
                     return new LoadGamePage();
 
                 case ApplicatiePage.Stats:
                     return new HighScorePage();
+
+                case ApplicatiePage.Mainwindow:
+                    return null;
 
                 default:
                     Debugger.Break();

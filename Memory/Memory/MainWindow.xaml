@@ -12,9 +12,37 @@
         <Grid.Background>
             <SolidColorBrush Color="blue" Opacity="0.3"/>
         </Grid.Background>
-        
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicatiePageValueConverter}}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid x:Name="GameGrid">
 
-        <local:SettingsControl/>
+            </Grid>
+            <Viewbox Grid.Column="1" Margin="0">
+
+                <StackPanel x:Name="scoreBoard" Background="LightGray" Width="120" Height="280" Visibility="Visible">
+
+                    <StackPanel Background="DarkGray" Margin="10">
+                        <Label HorizontalContentAlignment="Center" Background="DarkGray" Content="Tijd" Width="80"/>
+                        <Label x:Name="TimerLabel" HorizontalContentAlignment="Center" Background="DarkGray" Content="00:00" Width="80"/>
+                    </StackPanel>
+
+                    <StackPanel Background="DarkGray" Margin="10">
+                        <Label x:Name="Player1Label" HorizontalContentAlignment="Center" Content="Speler1" Width="80"/>
+                        <Label  x:Name="Score1Label" HorizontalContentAlignment="Center" Content="0" Width="80"/>
+                    </StackPanel>
+
+                    <StackPanel Background="DarkGray" Margin="10">
+                        <Label x:Name="Player2Label" HorizontalContentAlignment="Center" Content="Speler2" Width="80"/>
+                        <Label  x:Name="Score2Label" HorizontalContentAlignment="Center" Content="0" Width="80"/>
+                    </StackPanel>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+        
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage, Converter={local:ApplicatiePageValueConverter}}"/>
     </Grid>
 </Window>

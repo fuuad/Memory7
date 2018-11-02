@@ -1,20 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Memory
+﻿namespace Memory
 {
-    // Styles voor page switchen.
+    /// <summary>
+    /// styles voor page animations
+    /// </summary>
     public enum PageAnimation
     {
 
-        // idle
+        /// <summary>
+        /// wanneer de animaties afgelopen zijn
+        /// </summary>
         None = 0,
 
-        // alle mogelijke animaties
+        /// <summary>
+        /// animatie inkomend
+        /// </summary>
         SlideFromRight = 1,
+
+        /// <summary>
+        /// animatie verlatend
+        /// </summary>
         SlideToLeft = 2,
     }
 }

@@ -4,38 +4,38 @@
         <name>Memory</name>
     </assembly>
     <members>
-        <member name="T:Memory.SettingsControl">
+        <member name="T:Memory.SettingsControlInMenus">
             <summary>
             Interaction logic for SettingsControl.xaml
             </summary>
             <summary>
-            SettingsControl
+            SettingsControlInMenus
             </summary>
         </member>
-        <member name="M:Memory.SettingsControl.InitializeComponent">
+        <member name="M:Memory.SettingsControlInMenus.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Memory.SettingsControlInMenus.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
         </member>
-        <member name="T:Memory.GamePlayPage">
+        <member name="T:Memory.SettingsControlInGame">
             <summary>
-            Interaction logic for HoofdMenuPage.xaml
+            Interaction logic for SettingsControl.xaml
             </summary>
             <summary>
-            GamePlayPage
-            </summary>
-        </member>
-        <member name="M:Memory.GamePlayPage.#ctor">
-            <summary>
-            standaard constructor
+            SettingsControlInGame
             </summary>
         </member>
-        <member name="M:Memory.GamePlayPage.initGameGrid">
+        <member name="M:Memory.SettingsControlInGame.#ctor">
             <summary>
-            Initialiseerd de gamegrid en de kaarten.
+            Default constructor
             </summary>
         </member>
-        <member name="M:Memory.GamePlayPage.InitializeComponent">
+        <member name="M:Memory.SettingsControlInGame.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
@@ -94,6 +94,26 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:Memory.PageAnimation">
+            <summary>
+            styles voor page animations
+            </summary>
+        </member>
+        <member name="F:Memory.PageAnimation.None">
+            <summary>
+            wanneer de animaties afgelopen zijn
+            </summary>
+        </member>
+        <member name="F:Memory.PageAnimation.SlideFromRight">
+            <summary>
+            animatie inkomend
+            </summary>
+        </member>
+        <member name="F:Memory.PageAnimation.SlideToLeft">
+            <summary>
+            animatie verlatend
+            </summary>
+        </member>
         <member name="T:Memory.BasePage`1">
             <summary>
             Een pagina waar alle paginas van gaan functioneren.
@@ -123,6 +143,12 @@
             <summary>
             standaard constructor die animaties runt wanneer een pagina geladen wordt.
             </summary>
+        </member>
+        <member name="M:Memory.BasePage`1.#ctor(Memory.HoofdMenuViewModel)">
+            <summary>
+            Constructor die animaties specifiek maakt voor viewmodel.
+            </summary>
+            <param name="specificViewModel"></param>
         </member>
         <member name="M:Memory.BasePage`1.BasePage_Loaded(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
@@ -166,6 +192,11 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:Memory.PageAnimations">
+            <summary>
+            animaties voor de pagina
+            </summary>
+        </member>
         <member name="M:Memory.PageAnimations.SlideAndFadeFromRight(System.Windows.Controls.Page,System.Single)">
             <summary>
             animatie voor het inkomen pagina
@@ -182,14 +213,78 @@
             <param name="seconds"></param>
             <returns></returns>
         </member>
+        <member name="T:Memory.StoryBoardHelpers">
+            <summary>
+            hier wordt aangegeven wat de animaties moeten doen.
+            </summary>
+        </member>
         <member name="M:Memory.StoryBoardHelpers.AddSlideFromRight(System.Windows.Media.Animation.Storyboard,System.Single,System.Double,System.Single)">
             <summary>
-            alle animaties voor paginas
+            set de animaties voor inkomende paginas.
             </summary>
             <param name="storyboard"></param>
             <param name="seconds"></param>
             <param name="offset"></param>
             <param name="decelerationRatio"></param>
+        </member>
+        <member name="M:Memory.StoryBoardHelpers.AddSlideToLeft(System.Windows.Media.Animation.Storyboard,System.Single,System.Double,System.Single)">
+            <summary>
+            set de animaties voor verlatende paginas.
+            </summary>
+            <param name="storyboard"></param>
+            <param name="seconds"></param>
+            <param name="offset"></param>
+            <param name="decelerationRatio"></param>
+        </member>
+        <member name="M:Memory.StoryBoardHelpers.AddFadeIn(System.Windows.Media.Animation.Storyboard,System.Single)">
+            <summary>
+            animatie voor fade in.
+            </summary>
+            <param name="storyboard"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="M:Memory.StoryBoardHelpers.AddFadeOut(System.Windows.Media.Animation.Storyboard,System.Single)">
+            <summary>
+            animatie voor fade out.
+            </summary>
+            <param name="storyboard"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="T:Memory.Timer">
+            <summary>
+            script voor timer functies
+            </summary>
+        </member>
+        <member name="F:Memory.Timer.dt">
+            <summary>
+            De variablen worden hier aangemaakt. 
+            </summary>
+        </member>
+        <member name="M:Memory.Timer.#ctor(System.Windows.Controls.Label)">
+            <summary>
+            call
+            </summary>
+            <param name="TimerLabel"></param>
+        </member>
+        <member name="M:Memory.Timer.StartTimer">
+            <summary>
+            In deze method word de timer aangemaakt en krijgt hij waardes mee.
+            </summary>
+        </member>
+        <member name="M:Memory.Timer.dtTicker(System.Object,System.EventArgs)">
+            <summary>
+            Hier telt de timer op en krijgt hij zijn minuten en seconde counter.
+            </summary>
+        </member>
+        <member name="M:Memory.Timer.StopTimer">
+            <summary>
+            stopt de timer
+            </summary>
+        </member>
+        <member name="M:Memory.Timer.Resetbutton">
+            <summary>
+            Hier word de timer gestopt en gereset naar 0. begint dan weer met tellen.
+            </summary>
         </member>
         <member name="T:Memory.ApplicatiePageValueConverter">
             <summary>
@@ -250,6 +345,22 @@
             <summary>
             A converter that takes in a boolean and returns a <see cref="T:System.Windows.Visibility"/>
             </summary>
+        </member>
+        <member name="T:Memory.BaseViewModel">
+            <summary>
+            waar alle viewmodels naar kijken bij verandering.
+            </summary>
+        </member>
+        <member name="E:Memory.BaseViewModel.PropertyChanged">
+            <summary>
+            zodra een property data veranderd
+            </summary>
+        </member>
+        <member name="M:Memory.BaseViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            zet property changed naar nieuwe values.
+            </summary>
+            <param name="name"></param>
         </member>
         <member name="T:Memory.RelayCommand">
             <summary>
@@ -314,6 +425,11 @@
             command om naar de hoofdmenu page te switchen
             </summary>
         </member>
+        <member name="P:Memory.HoofdMenuViewModel.SettingsCommand">
+            <summary>
+            command om naar de settings page te switchen
+            </summary>
+        </member>
         <member name="M:Memory.HoofdMenuViewModel.#ctor">
             <summary>
             Standaard Constructor
@@ -344,6 +460,12 @@
             <returns></returns>
         </member>
         <member name="M:Memory.HoofdMenuViewModel.SwitchToHoofdMenuPage">
+            <summary>
+            Set de CurrentPage die in mainwindow staat op en set hem naar hoofdmenu page.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.HoofdMenuViewModel.ToggleSettingsControl">
             <summary>
             Set de CurrentPage die in mainwindow staat op en set hem naar hoofdmenu page.
             </summary>
@@ -402,11 +524,6 @@
             Nieuw Spel menu waar je een spel kan opzetten en beginnen.
             </summary>
         </member>
-        <member name="F:Memory.ApplicatiePage.Gameplay">
-            <summary>
-            Gameplay scherm waar je het spel speelt.
-            </summary>
-        </member>
         <member name="F:Memory.ApplicatiePage.LoadGame">
             <summary>
             Opgeslagen Spel menu waar je een spel kan laden om verder te spelen.
@@ -430,9 +547,19 @@
             Standaard Constructor
             </summary>
         </member>
+        <member name="M:Memory.MainWindow.initGameGrid">
+            <summary>
+            start game
+            </summary>
+        </member>
         <member name="M:Memory.MainWindow.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Memory.MemoryGrid">
+            <summary>
+            Script voor de memory kaarten
             </summary>
         </member>
         <member name="M:Memory.MemoryGrid.#ctor(System.Windows.Controls.Grid,System.Int32,System.Int32)">
@@ -443,7 +570,7 @@
             <param name="cols"> hoeveel kolommen het grid krijgt</param>
             <param name="rows"> hoeveel rijen het grid krijgt</param>
         </member>
-        <member name="M:Memory.MemoryGrid.setBackground">
+        <member name="M:Memory.MemoryGrid.SetBackground">
             <summary>
             verandert de achtergrond en muziek van het spel afhankelijk van gekozen thema.
             </summary>
@@ -455,10 +582,12 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:Memory.MemoryGrid.AddTitle">
+        <member name="M:Memory.MemoryGrid.InitializeGameGrid(System.Int32,System.Int32)">
             <summary>
-            voegt label toe aan de ui
+            maakt het grid aan
             </summary>
+            <param name="cols">hoeveel kolommen er moeten komen</param>
+            <param name="rows">hoeveel rijen er moeten komen</param>
         </member>
         <member name="M:Memory.MemoryGrid.GetImagesList">
             <summary>

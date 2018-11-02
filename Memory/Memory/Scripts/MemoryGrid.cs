@@ -11,23 +11,24 @@ using System.IO;
 
 namespace Memory
 {
+    /// <summary>
+    /// Script voor de memory kaarten
+    /// </summary>
     public class MemoryGrid
     {
-
         #region private members
 
         private Grid grid;
         private int cols;
         private int rows;
         private bool allowclick = true;
-        private int currentplayer;
+        private int currentplayer = 0;
         private int player1score = 0;
         private int player2score = 0;
         private int correctcount = 0;
-        private string theme = "Default";
+        private string theme;
         private Label score1 = new Label();
         private Label score2 = new Label();
-        private Label title = new Label();
         private MediaPlayer Sound1 = new MediaPlayer();
         private MediaPlayer Sound2 = new MediaPlayer();
         private MediaPlayer Sound3 = new MediaPlayer();
@@ -36,8 +37,7 @@ namespace Memory
         private String[] files;
 
         #endregion
-                     
-
+        
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -46,51 +46,55 @@ namespace Memory
         /// <param name="rows"> hoeveel rijen het grid krijgt</param>
         public MemoryGrid(Grid grid, int cols, int rows)
         {
-            theme = Microsoft.VisualBasic.Interaction.InputBox("Welk Thema wil je? Default of Warcraft?", "Vraagje", "");
-            this.grid = grid;
-            this.cols = cols;
-            this.rows = rows;
+            theme = Microsoft.VisualBasic.Interaction.InputBox("Welk Thema wil je? Default of Warcraft?", "Vraagje");
 
-            InitializeGameGrid(cols, rows);
-            GetImagesList();
-            AddImages();
-            setBackground();
+            if(theme != string.Empty)
+            {
+                this.grid = grid;
+                this.cols = cols;
+                this.rows = rows;
+
+                InitializeGameGrid(cols, rows);
+                GetImagesList();
+                AddImages();
+                SetBackground();
+                Scores.SetScore((string)player1score.ToString(), 1);
+                Scores.SetScore((string)player2score.ToString(), 2);
+                Scores.SetPlayerTurn(currentplayer);
+            }
         }
-
         /// <summary>
         /// verandert de achtergrond en muziek van het spel afhankelijk van gekozen thema.
         /// </summary>
-        private void setBackground()
+        private void SetBackground()
         {
             ImageBrush myBrush = new ImageBrush();
-            if (theme != string.Empty)
+            switch (theme)
             {
-                switch (theme)
-                {
-                    case "Default":
-                        myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Default/Assets/background.png", UriKind.Relative));
-                        Sound3.Volume = 0.1;
-                        Sound3.Open((new Uri("Assets/Themes/Default/Audio/background.mp3", UriKind.Relative)));
-                        Sound3.Play();
-                        Sound3.MediaEnded += new EventHandler(Media_Ended);
-                        break;
-                    case "Warcraft":
-                        myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Warcraft/Assets/background.png", UriKind.Relative));
-                        Sound3.Volume = 0.05;
-                        Sound3.Open((new Uri("Assets/Themes/Warcraft/Audio/background.mp3", UriKind.Relative)));
-                        Sound3.Play();
-                        Sound3.MediaEnded += new EventHandler(Media_Ended);
-                        break;
-                    default:
-                        myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Default/Assets/background.png", UriKind.Relative));
-                        Sound3.Volume = 0.1;
-                        Sound3.Open((new Uri("Assets/Themes/Default/Audio/background.mp3", UriKind.Relative)));
-                        Sound3.Play();
-                        Sound3.MediaEnded += new EventHandler(Media_Ended);
-                        break;
-                }
-                grid.Background = myBrush;
+                case "Default":
+                    myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Default/Assets/background.png", UriKind.Relative));
+                    Sound3.Volume = 0.1;
+                    Sound3.Open((new Uri("Assets/Themes/Default/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Play();
+                    Sound3.MediaEnded += new EventHandler(Media_Ended);
+                    break;
+                case "Warcraft":
+                    myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Warcraft/Assets/background.png", UriKind.Relative));
+                    Sound3.Volume = 0.05;
+                    Sound3.Open((new Uri("Assets/Themes/Warcraft/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Play();
+                    Sound3.MediaEnded += new EventHandler(Media_Ended);
+                    break;
+                default:
+                    myBrush.ImageSource = new BitmapImage(new Uri("Assets/Themes/Default/Assets/background.png", UriKind.Relative));
+                    Sound3.Volume = 0.1;
+                    Sound3.Open((new Uri("Assets/Themes/Default/Audio/background.mp3", UriKind.Relative)));
+                    Sound3.Play();
+                    Sound3.MediaEnded += new EventHandler(Media_Ended);
+                    break;
             }
+            Grid parentGrid = (Grid)VisualTreeHelper.GetParent(grid);
+            parentGrid.Background = myBrush;
         }
 
         /// <summary>
@@ -104,77 +108,22 @@ namespace Memory
             Sound3.Play();
         }
 
+        /// <summary>
+        /// maakt het grid aan
+        /// </summary>
+        /// <param name="cols">hoeveel kolommen er moeten komen</param>
+        /// <param name="rows">hoeveel rijen er moeten komen</param>
         private void InitializeGameGrid(int cols, int rows)
         {
             for (int i = 0; i < rows; i++)
             {
-                var lab = new Label();
-                lab.Content = "text";
-
                 grid.RowDefinitions.Add(new RowDefinition());
-                Grid.SetRow(lab,i);
             }
             for (int i = 0; i < cols; i++)
             {
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
             }
         }
-
-        /// <summary>
-        /// voegt label toe aan de ui
-        /// </summary>
-        private void AddTitle()
-        {
-            Label title = new Label();
-            title.Content = "Memory";
-            title.Foreground = Brushes.White;
-            title.HorizontalAlignment = HorizontalAlignment.Stretch;
-            title.VerticalAlignment = VerticalAlignment.Stretch;
-            title.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-            title.VerticalAlignment = VerticalAlignment.Stretch;
-
-            Viewbox vb = new Viewbox();
-            vb.HorizontalAlignment = HorizontalAlignment.Stretch;
-            vb.Child = title;
-            Grid.SetRow(vb, 0);
-            Grid.SetColumn(vb, cols);
-            grid.Children.Add(vb);
-        }
-
-        //voegt text toe om scores bij te houden aan de ui
-        private void AddScores()
-        {
-            score1.Content = "Player 1 Score :" + " " + player1score;
-            score1.FontFamily = new FontFamily("Comic Sans");
-            score1.Foreground = Brushes.White;
-            score1.HorizontalAlignment = HorizontalAlignment.Stretch;
-            score1.VerticalAlignment = VerticalAlignment.Stretch;
-            score1.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-            score1.VerticalAlignment = VerticalAlignment.Stretch;
-
-            Viewbox vb = new Viewbox();
-            vb.HorizontalAlignment = HorizontalAlignment.Stretch;
-            vb.Child = score1;
-            Grid.SetRow(vb, 1);
-            Grid.SetColumn(vb, cols);
-            grid.Children.Add(vb);
-
-            score2.Content = "Player 2 Score :" + " " + player2score;
-            score2.FontFamily = new FontFamily("Comic Sans");
-            score2.Foreground = Brushes.White;
-            score2.HorizontalAlignment = HorizontalAlignment.Stretch;
-            score2.VerticalAlignment = VerticalAlignment.Stretch;
-            score2.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-            score2.VerticalAlignment = VerticalAlignment.Stretch;
-
-            Viewbox vb2 = new Viewbox();
-            vb2.HorizontalAlignment = HorizontalAlignment.Stretch;
-            vb2.Child = score2;
-            Grid.SetRow(vb2, 2);
-            Grid.SetColumn(vb2, cols);
-            grid.Children.Add(vb2);
-        }
-
 
         List<ImageSource> images = new List<ImageSource>();
 
@@ -184,7 +133,6 @@ namespace Memory
         /// <returns></returns>
         private List<ImageSource> GetImagesList()
         {
-
             switch (theme)
             {
                 case "Default":
@@ -227,19 +175,20 @@ namespace Memory
                 {
                     Image backgroundImage = new Image();
                     backgroundImage.Tag = images.First();
-                    ImageSource front = (ImageSource)backgroundImage.Tag;
-                    backgroundImage.Source = front;
+                    //ImageSource front = (ImageSource)backgroundImage.Tag;
+                    //backgroundImage.Source = front;
                     images.RemoveAt(0);
                     backgroundImage.MouseDown += new MouseButtonEventHandler(CardClick);
                     Grid.SetColumn(backgroundImage, column);
                     Grid.SetRow(backgroundImage, row);
                     grid.Children.Add(backgroundImage);
-                    await Task.Delay(500);
+                    //await Task.Delay(500);
                     backgroundImage.Source = new BitmapImage(new Uri("Assets/Themes/Warcraft/Back/question.png", UriKind.Relative));
                     allowclick = false;
                 }
             }
             allowclick = true;
+            Timer.StartTimer();
         }
 
         /// <summary>
@@ -281,12 +230,15 @@ namespace Memory
                     if (currentplayer == 0)
                     {
                         player1score++;
-                        score1.Content = "Player 1 Score :" + " " + player1score;
+                        score1.Content = player1score;
+                        Scores.SetScore((string)score1.Content.ToString(), 1);
                     }
                     else
                     {
                         player2score++;
-                        score2.Content = "Player 2 Score :" + " " + player2score;
+                        score2.Content = player2score;
+                        Scores.SetScore((string)score2.Content.ToString(), 2);
+                        Scores.SetPlayerTurn(currentplayer);
                     }
                     allowclick = true;
                 }
@@ -295,13 +247,17 @@ namespace Memory
                     //FOUT GEKLIKT
                     if (currentplayer == 0)
                     {
+                        
                         currentplayer = 1;
+                        Scores.SetPlayerTurn(currentplayer);
                         Console.WriteLine("Player 2's turn");
                     }
                     else
                     {
+                       
                         currentplayer = 0;
-                        Console.WriteLine("Player 2's turn");
+                        Scores.SetPlayerTurn(currentplayer);
+                        Console.WriteLine("Player 1's turn");
                     }
                     allowclick = false;
                     Console.WriteLine("Niet goed");
@@ -313,6 +269,7 @@ namespace Memory
                 }
                 if (correctcount == images.Count)
                 {
+                    Timer.StopTimer();
                     if (player1score > player2score)
                     {
                         MessageBox.Show("Player 1 wins!");

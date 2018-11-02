@@ -54,10 +54,14 @@
             </StackPanel>
         </Viewbox>
 
+        <Grid x:Name="SettingsOverlay" Visibility="Collapsed">
+            <local:SettingsControlInMenus/>
+        </Grid>
+        
         <Button Content="COG" Name="Options"
                 Width="40" Height="40"
                 HorizontalAlignment="Right" 
                 VerticalAlignment="Bottom"
-                Command="{Binding SettingsCommand}"/>
+                Click="Options_Click"/>
     </Grid>
 </local:BasePage>

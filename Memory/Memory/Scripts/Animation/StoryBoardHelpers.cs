@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Animation;
 
 namespace Memory
 {
+    /// <summary>
+    /// hier wordt aangegeven wat de animaties moeten doen.
+    /// </summary>
     public static class StoryBoardHelpers
     {
         /// <summary>
-        /// alle animaties voor paginas
+        /// set de animaties voor inkomende paginas.
         /// </summary>
         /// <param name="storyboard"></param>
         /// <param name="seconds"></param>
@@ -32,6 +31,13 @@ namespace Memory
             storyboard.Children.Add(animation);
         }
 
+        /// <summary>
+        /// set de animaties voor verlatende paginas.
+        /// </summary>
+        /// <param name="storyboard"></param>
+        /// <param name="seconds"></param>
+        /// <param name="offset"></param>
+        /// <param name="decelerationRatio"></param>
         public static void AddSlideToLeft(this Storyboard storyboard, float seconds, double offset, float decelerationRatio = 0.09f)
         {
 
@@ -47,6 +53,11 @@ namespace Memory
             storyboard.Children.Add(animation);
         }
 
+        /// <summary>
+        /// animatie voor fade in.
+        /// </summary>
+        /// <param name="storyboard"></param>
+        /// <param name="seconds"></param>
         public static void AddFadeIn(this Storyboard storyboard, float seconds)
         {
 
@@ -62,6 +73,11 @@ namespace Memory
             storyboard.Children.Add(animation);
         }
 
+        /// <summary>
+        /// animatie voor fade out.
+        /// </summary>
+        /// <param name="storyboard"></param>
+        /// <param name="seconds"></param>
         public static void AddFadeOut(this Storyboard storyboard, float seconds)
         {
 

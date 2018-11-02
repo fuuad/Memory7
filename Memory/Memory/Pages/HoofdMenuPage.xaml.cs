@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Memory
 {
@@ -20,6 +7,7 @@ namespace Memory
     /// </summary>
     public partial class HoofdMenuPage : BasePage<HoofdMenuViewModel>
     {
+
         #region Constructors
         
         /// <summary>
@@ -39,5 +27,22 @@ namespace Memory
         }
 
         #endregion
+
+        private void Options_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            bool overlayOpen = false;
+
+
+            if (overlayOpen != true)
+            {
+                overlayOpen = true;
+
+                SettingsOverlay.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                SettingsOverlay.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }

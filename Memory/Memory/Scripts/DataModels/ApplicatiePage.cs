@@ -5,20 +5,16 @@
     /// </summary>
     public enum ApplicatiePage
     {
+        Mainwindow = 0,
         /// <summary>
         /// Hoofd Menu is waar je begint.
         /// </summary>
-        Hoofdmenu = 0,
+        Hoofdmenu = 1,
 
         /// <summary>
         /// Nieuw Spel menu waar je een spel kan opzetten en beginnen.
         /// </summary>
-        Newgame = 1,
-
-        /// <summary>
-        /// Gameplay scherm waar je het spel speelt.
-        /// </summary>
-        Gameplay = 2,
+        Newgame = 2,
 
         /// <summary>
         /// Opgeslagen Spel menu waar je een spel kan laden om verder te spelen.

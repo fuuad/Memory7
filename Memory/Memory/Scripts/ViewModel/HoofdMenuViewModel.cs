@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Memory
@@ -39,6 +37,11 @@ namespace Memory
         /// </summary>
         public ICommand HoofdMenuCommand { get; set; }
 
+        /// <summary>
+        /// command om naar de settings page te switchen
+        /// </summary>
+        public ICommand SettingsCommand { get; set; }
+
         #endregion
 
         #region Constructor
@@ -59,6 +62,7 @@ namespace Memory
 
             HoofdMenuCommand = new RelayCommand(async () => await SwitchToHoofdMenuPage());
 
+            SettingsCommand = new RelayCommand(async () => await ToggleSettingsControl());
         }
 
         #endregion
@@ -80,8 +84,8 @@ namespace Memory
         /// <returns>returns de gameplay pagina en wacht 1 miliseconde</returns>
         public async Task SwitchToGameplayPage()
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicatiePage.Gameplay;
-
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicatiePage.Mainwindow;
+            ((MainWindow)Application.Current.MainWindow).initGameGrid();
             await Task.Delay(1);
         }
 
@@ -115,6 +119,15 @@ namespace Memory
         {
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicatiePage.Hoofdmenu;
 
+            await Task.Delay(1);
+        }
+        
+        /// <summary>
+        /// Set de CurrentPage die in mainwindow staat op en set hem naar hoofdmenu page.
+        /// </summary>
+        /// <returns></returns>
+        public async Task ToggleSettingsControl()
+        {
             await Task.Delay(1);
         }
     }

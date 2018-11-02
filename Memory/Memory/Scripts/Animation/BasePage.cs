@@ -1,8 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows;
 using System.Threading.Tasks;
-using System.Windows.Media.Animation;
-using System;
 
 namespace Memory
 {
@@ -59,7 +57,6 @@ namespace Memory
 
         #region Constructor
 
-
         /// <summary>
         /// standaard constructor die animaties runt wanneer een pagina geladen wordt.
         /// </summary>
@@ -75,6 +72,10 @@ namespace Memory
             this.ViewModel = new VM();
         }
 
+        /// <summary>
+        /// Constructor die animaties specifiek maakt voor viewmodel.
+        /// </summary>
+        /// <param name="specificViewModel"></param>
         public BasePage(HoofdMenuViewModel specificViewModel)
         {
             this.specificViewModel = specificViewModel;
@@ -133,6 +134,5 @@ namespace Memory
         }
 
         #endregion
-
     }
 }
