@@ -44,7 +44,6 @@ namespace Memory
         {
             increment++;
             timerLabel.Content = string.Format("{0:d2}:{1:d2}", increment / 60, increment % 60);
-
         }
 
         /// <summary>
@@ -59,13 +58,10 @@ namespace Memory
         /// Hier word de timer gestopt en gereset naar 0. begint dan weer met tellen.
         /// </summary>
         public static void Resetbutton()
-
         {
             dt.Stop();
             increment = 0;
             timerLabel.Content = string.Format("{0:d2}:{1:d2}", increment / 60, increment % 60);
-            dt.Start();
         }
-
     }
 }

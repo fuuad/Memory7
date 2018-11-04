@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,6 +10,9 @@ namespace Memory
     /// </summary>
     public class HoofdMenuViewModel : BaseViewModel
     {
+        private bool playerType = true;
+        private bool playerDiff = true;
+
         #region commands
 
         /// <summary>
@@ -42,6 +46,16 @@ namespace Memory
         /// </summary>
         public ICommand SettingsCommand { get; set; }
 
+        /// <summary>
+        /// command om aan te geven hoeveel spelers er spelen
+        /// </summary>
+        public ICommand PlayerTypeCommand { get; set; }
+
+        /// <summary>
+        /// command om aan te geven hoeveel spelers er spelen
+        /// </summary>
+        public ICommand PlayerDiffCommand { get; set; }
+
         #endregion
 
         #region Constructor
@@ -63,6 +77,10 @@ namespace Memory
             HoofdMenuCommand = new RelayCommand(async () => await SwitchToHoofdMenuPage());
 
             SettingsCommand = new RelayCommand(async () => await ToggleSettingsControl());
+
+            PlayerTypeCommand = new RelayCommand(async () => await SetPlayerType());
+
+            PlayerDiffCommand = new RelayCommand(async () => await SetDiffType());
         }
 
         #endregion
@@ -85,9 +103,42 @@ namespace Memory
         public async Task SwitchToGameplayPage()
         {
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicatiePage.Mainwindow;
-            ((MainWindow)Application.Current.MainWindow).initGameGrid();
+            if(playerType)
+            {
+                ((MainWindow)Application.Current.MainWindow).initGameGridSingle(playerDiff);
+
+            }
+            else
+            {
+                ((MainWindow)Application.Current.MainWindow).initGameGridMulti(playerDiff);
+            }
             await Task.Delay(1);
         }
+
+
+
+        /// <summary>
+        /// verandert de playertype tussen single en multi.
+        /// </summary>
+        /// <returns></returns>
+        public async Task SetPlayerType()
+        {
+            playerType = !playerType;
+
+            await Task.Delay(1);
+        }
+        
+        /// <summary>
+        /// verandert de playerdiff tussen normaal en gemiddeld.
+        /// </summary>
+        /// <returns></returns>
+        public async Task SetDiffType()
+        {
+            playerDiff = !playerDiff;
+
+            await Task.Delay(1);
+        }
+
 
         /// <summary>
         /// Set de CurrentPage die in mainwindow staat op en set hem naar loadgame page.

@@ -13,5 +13,18 @@ namespace Memory
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// slaat input voor naam op in memory.
+        /// </summary>
+        public string namePlayer1;
+        /// <summary>
+        /// slaat input voor naam op in memory.
+        /// </summary>
+        public string namePlayer2;
+
+        /// <summary>
+        /// slaat input voor thema op in memory.
+        /// </summary>
+        public string currentTheme;
     }
 }

@@ -38,8 +38,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>groep 7 logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -86,6 +85,7 @@
     </Compile>
     <Compile Include="Scripts\Animation\PageAnimations.cs" />
     <Compile Include="Scripts\Animation\StoryBoardHelpers.cs" />
+    <Compile Include="Scripts\SinglePlayerGame.cs" />
     <Compile Include="Scripts\Timer.cs" />
     <Compile Include="Scripts\ValueConverters\ApplicatiePageValueConverter.cs" />
     <Compile Include="Scripts\ValueConverters\BaseValueConverter.cs" />
@@ -134,7 +134,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Scripts\MemoryGrid.cs" />
+    <Compile Include="Scripts\MultiPlayerGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -161,13 +161,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="groep 7 logo.ico" />
     <Resource Include="FodyWeavers.xml" />
-    <Resource Include="Assets\Menus\HoofdMenu\mainLogo.png" />
     <Resource Include="Assets\Menus\HoofdMenu\background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\Logo\256x256_png_icon.png" />
-    <Resource Include="Assets\Images\Logo\256x256_png_icon.ico" />
+    <Resource Include="Assets\Menus\HoofdMenu\mainLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Assets\Themes\Default\Front\css3-logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -281,6 +282,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\Images\Logo\" />
     <Folder Include="Assets\Menus\OptiesMenu\" />
     <Folder Include="Assets\Menus\StatsMenu\" />
   </ItemGroup>

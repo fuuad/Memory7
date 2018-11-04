@@ -7,6 +7,7 @@ namespace Memory
     /// </summary>
     public partial class HoofdMenuPage : BasePage<HoofdMenuViewModel>
     {
+        bool overlayOpen = false;
 
         #region Constructors
         
@@ -28,21 +29,25 @@ namespace Memory
 
         #endregion
 
-        private void Options_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void Options_Click(object sender, RoutedEventArgs e)
         {
-            bool overlayOpen = false;
-
+            overlayOpen = false;
 
             if (overlayOpen != true)
             {
-                overlayOpen = true;
-
                 SettingsOverlay.Visibility = Visibility.Visible;
+                overlayOpen = true;
             }
             else
             {
                 SettingsOverlay.Visibility = Visibility.Collapsed;
+                overlayOpen = false;
             }
+        }
+
+        private void Close_Game(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

@@ -84,10 +84,57 @@
             NewGamePage
             </summary>
         </member>
+        <member name="F:Memory.NewGamePage.overlayOpen">
+            <summary>
+            private members
+            </summary>
+        </member>
         <member name="M:Memory.NewGamePage.#ctor">
             <summary>
             Default Constructor
             </summary>
+        </member>
+        <member name="M:Memory.NewGamePage.TextChangedP1(System.Object,System.EventArgs)">
+            <summary>
+            slaat input op voor speler1 naam.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Memory.NewGamePage.TextChangedP2(System.Object,System.EventArgs)">
+            <summary>
+            slaat input op voor speler2 naam.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Memory.NewGamePage.SelectThemeChange(System.Object,System.EventArgs)">
+            <summary>
+            bij verandering van de waarde in de combobox.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Memory.NewGamePage.Options_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            on options clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Memory.NewGamePage.Player_Mode(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Zet de aantal spelers
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Memory.NewGamePage.Player_Diff(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            zet de moeilijksheidsgraad
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="M:Memory.NewGamePage.InitializeComponent">
             <summary>
@@ -249,6 +296,61 @@
             </summary>
             <param name="storyboard"></param>
             <param name="seconds"></param>
+        </member>
+        <member name="T:Memory.SinglePlayerGame">
+            <summary>
+            Script voor de memory kaarten
+            </summary>
+        </member>
+        <member name="M:Memory.SinglePlayerGame.#ctor(System.Windows.Controls.Grid,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="grid">Het grid waar de kaarten in komen</param>
+            <param name="cols"> hoeveel kolommen het grid krijgt</param>
+            <param name="rows"> hoeveel rijen het grid krijgt</param>
+        </member>
+        <member name="M:Memory.SinglePlayerGame.SetBackground">
+            <summary>
+            verandert de achtergrond en muziek van het spel afhankelijk van gekozen thema.
+            </summary>
+        </member>
+        <member name="M:Memory.SinglePlayerGame.Media_Ended(System.Object,System.EventArgs)">
+            <summary>
+            Zodra muziek afloopt replay.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Memory.SinglePlayerGame.SetGameGrid(System.Int32,System.Int32)">
+            <summary>
+            set informatie aan het GameGrid.
+            </summary>
+            <param name="_cols">hoeveel kolommen er moeten komen</param>
+            <param name="_rows">hoeveel rijen er moeten komen</param>
+        </member>
+        <member name="M:Memory.SinglePlayerGame.ResetGameGrid">
+            <summary>
+            refresht de informatie aan het GameGrid.
+            </summary>
+        </member>
+        <member name="M:Memory.SinglePlayerGame.GetImagesList">
+            <summary>
+            pakt de images uit het gekozen thema en plaatst die in een lijst.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.SinglePlayerGame.AddImages">
+            <summary>
+            voegt de images toe aan het game grid
+            </summary>
+        </member>
+        <member name="M:Memory.SinglePlayerGame.CardClick(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            houdt de klik actie bij van de user wanneer die op een plaatje klikt.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="T:Memory.Timer">
             <summary>
@@ -430,6 +532,16 @@
             command om naar de settings page te switchen
             </summary>
         </member>
+        <member name="P:Memory.HoofdMenuViewModel.PlayerTypeCommand">
+            <summary>
+            command om aan te geven hoeveel spelers er spelen
+            </summary>
+        </member>
+        <member name="P:Memory.HoofdMenuViewModel.PlayerDiffCommand">
+            <summary>
+            command om aan te geven hoeveel spelers er spelen
+            </summary>
+        </member>
         <member name="M:Memory.HoofdMenuViewModel.#ctor">
             <summary>
             Standaard Constructor
@@ -446,6 +558,18 @@
             Set de CurrentPage die in mainwindow staat op en set hem naar de gameplay page.
             </summary>
             <returns>returns de gameplay pagina en wacht 1 miliseconde</returns>
+        </member>
+        <member name="M:Memory.HoofdMenuViewModel.SetPlayerType">
+            <summary>
+            verandert de playertype tussen single en multi.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Memory.HoofdMenuViewModel.SetDiffType">
+            <summary>
+            verandert de playerdiff tussen normaal en gemiddeld.
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Memory.HoofdMenuViewModel.SwitchToLoadGamePage">
             <summary>
@@ -470,6 +594,37 @@
             Set de CurrentPage die in mainwindow staat op en set hem naar hoofdmenu page.
             </summary>
             <returns></returns>
+        </member>
+        <member name="F:Memory.Scores._lab">
+            <summary>
+            Private members voor scores
+            </summary>
+        </member>
+        <member name="M:Memory.Scores.#ctor(System.Windows.Controls.Label,System.Windows.Controls.Label)">
+            <summary>
+            default constructor 
+            </summary>
+            <param name="lab"></param>
+            <param name="player"></param>
+        </member>
+        <member name="M:Memory.Scores.SetMulti(System.Windows.Controls.StackPanel)">
+            <summary>
+            toont de player 2 scores bij multiplayer.
+            </summary>
+            <param name="panel"></param>
+        </member>
+        <member name="M:Memory.Scores.SetScore(System.String,System.Int32)">
+            <summary>
+            set scores vanuit memorygrid script
+            </summary>
+            <param name="str"></param>
+            <param name="player"></param>
+        </member>
+        <member name="M:Memory.Scores.SetPlayerTurn(System.Int32)">
+            <summary>
+            set playerturn vanuit memorygrid script
+            </summary>
+            <param name="turn"></param>
         </member>
         <member name="T:Memory.WindowViewModel">
             <summary>
@@ -497,6 +652,21 @@
             </summary>
             <summary>
             App
+            </summary>
+        </member>
+        <member name="F:Memory.App.namePlayer1">
+            <summary>
+            slaat input voor naam op in memory.
+            </summary>
+        </member>
+        <member name="F:Memory.App.namePlayer2">
+            <summary>
+            slaat input voor naam op in memory.
+            </summary>
+        </member>
+        <member name="F:Memory.App.currentTheme">
+            <summary>
+            slaat input voor thema op in memory.
             </summary>
         </member>
         <member name="M:Memory.App.InitializeComponent">
@@ -547,60 +717,76 @@
             Standaard Constructor
             </summary>
         </member>
-        <member name="M:Memory.MainWindow.initGameGrid">
+        <member name="M:Memory.MainWindow.SetNames">
             <summary>
-            start game
+            pakt de opgeslagen naam input en zet ze in de labels
             </summary>
+        </member>
+        <member name="M:Memory.MainWindow.initGameGridSingle(System.Boolean)">
+            <summary>
+            start spel voor enkele speler
+            </summary>
+        </member>
+        <member name="M:Memory.MainWindow.initGameGridMulti(System.Boolean)">
+            <summary>
+            start spel voor meerdere spelers
+            </summary>        
         </member>
         <member name="M:Memory.MainWindow.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
         </member>
-        <member name="T:Memory.MemoryGrid">
+        <member name="T:Memory.MultiPlayerGame">
             <summary>
             Script voor de memory kaarten
             </summary>
         </member>
-        <member name="M:Memory.MemoryGrid.#ctor(System.Windows.Controls.Grid,System.Int32,System.Int32)">
+        <member name="M:Memory.MultiPlayerGame.#ctor(System.Windows.Controls.Grid,System.Int32,System.Int32,System.Boolean)">
             <summary>
-            Default constructor
+            Default constructor.
             </summary>
             <param name="grid">Het grid waar de kaarten in komen</param>
             <param name="cols"> hoeveel kolommen het grid krijgt</param>
             <param name="rows"> hoeveel rijen het grid krijgt</param>
+            <param name="diff"> of alle kaartjes in 1x geladen kunnen worden</param>
         </member>
-        <member name="M:Memory.MemoryGrid.SetBackground">
+        <member name="M:Memory.MultiPlayerGame.SetBackground">
             <summary>
             verandert de achtergrond en muziek van het spel afhankelijk van gekozen thema.
             </summary>
         </member>
-        <member name="M:Memory.MemoryGrid.Media_Ended(System.Object,System.EventArgs)">
+        <member name="M:Memory.MultiPlayerGame.Media_Ended(System.Object,System.EventArgs)">
             <summary>
             Zodra muziek afloopt replay.
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:Memory.MemoryGrid.InitializeGameGrid(System.Int32,System.Int32)">
+        <member name="M:Memory.MultiPlayerGame.SetGameGrid(System.Int32,System.Int32)">
             <summary>
-            maakt het grid aan
+            set informatie aan het GameGrid.
             </summary>
-            <param name="cols">hoeveel kolommen er moeten komen</param>
-            <param name="rows">hoeveel rijen er moeten komen</param>
+            <param name="_cols">hoeveel kolommen er moeten komen</param>
+            <param name="_rows">hoeveel rijen er moeten komen</param>
         </member>
-        <member name="M:Memory.MemoryGrid.GetImagesList">
+        <member name="M:Memory.MultiPlayerGame.ResetGameGrid">
+            <summary>
+            refresht de informatie aan het GameGrid.
+            </summary>
+        </member>
+        <member name="M:Memory.MultiPlayerGame.GetImagesList">
             <summary>
             pakt de images uit het gekozen thema en plaatst die in een lijst.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Memory.MemoryGrid.AddImages">
+        <member name="M:Memory.MultiPlayerGame.AddImages">
             <summary>
             voegt de images toe aan het game grid
             </summary>
         </member>
-        <member name="M:Memory.MemoryGrid.CardClick(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+        <member name="M:Memory.MultiPlayerGame.CardClick(System.Object,System.Windows.Input.MouseButtonEventArgs)">
             <summary>
             houdt de klik actie bij van de user wanneer die op een plaatje klikt.
             </summary>

@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows;
 
 namespace Memory
 {
@@ -13,8 +14,7 @@ namespace Memory
         public static Label _lab2;
         public static Label player1Lab;
         public static Label player2Lab;
-
-
+        
         /// <summary>
         /// default constructor 
         /// </summary>
@@ -35,6 +35,15 @@ namespace Memory
         }
 
         /// <summary>
+        /// toont de player 2 scores bij multiplayer.
+        /// </summary>
+        /// <param name="panel"></param>
+        public static void SetMulti(StackPanel panel)
+        {
+            panel.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
         /// set scores vanuit memorygrid script
         /// </summary>
         /// <param name="str"></param>
@@ -49,7 +58,6 @@ namespace Memory
             {
                 _lab2.Content = str;
             }
-
         }
 
         /// <summary>

@@ -22,7 +22,7 @@
 
             <StackPanel Width="400" Height="400">
 
-                <Image Source="../Assets/Menus/HoofdMenu/mainLogo.png" Margin="0,0,0,20"/>
+                <Image Source="../Assets/Menus/HoofdMenu/mainLogo.png"  Margin="0,10,0,10" Height="145"/>
 
                 <Grid Background="white" Height="auto">
                     <Grid.ColumnDefinitions>
@@ -36,7 +36,7 @@
                         <Line X1="0" X2="280" Stroke="Black" StrokeThickness="2"/>
                         
                         <ListView HorizontalContentAlignment="Center">
-                            <TextBlock TextAlignment="Center" Height="20">Ryad</TextBlock>
+                            <TextBlock TextAlignment="Center" Height="20">Jelke</TextBlock>
                             <TextBlock TextAlignment="Center" Height="20">Ryad</TextBlock>
                             <TextBlock TextAlignment="Center" Height="20">Ryad</TextBlock>
                             <TextBlock TextAlignment="Center" Height="20">Ryad</TextBlock>
@@ -55,7 +55,7 @@
                             <TextBlock TextAlignment="Center" Height="20">4400</TextBlock>
                             <TextBlock TextAlignment="Center" Height="20">2299</TextBlock>
                             <TextBlock TextAlignment="Center" Height="20">1375</TextBlock>
-                            <TextBlock TextAlignment="Center" Height="20">9</TextBlock>
+                            <TextBlock TextAlignment="Center" Height="20">900</TextBlock>
                         </ListView>
 
                     </StackPanel>
